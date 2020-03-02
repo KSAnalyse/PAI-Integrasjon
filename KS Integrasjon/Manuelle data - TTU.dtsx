@@ -1,0 +1,1715 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/17/2020 12:58:03 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="UTLAAN17-X1G3"
+  DTS:CreatorName="KSINT\8093AHA"
+  DTS:DTSID="{3B0346E8-DD73-4526-B572-3919B6F38499}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3026.27"
+  DTS:LocaleID="1044"
+  DTS:ObjectName="Manuelle data - TTU"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="75"
+  DTS:VersionGUID="{E6B29EB4-F10C-494B-9E08-8822B799B63E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Mal]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{5F6DDE3B-3E51-4B0A-9FFD-FE77A4FC461F}"
+      DTS:ObjectName="Mal">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" +  @[User::ExcelFile] + ";Extended Properties=\"" + @[User::ExtProperties] + "\""</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\\ks-sql2018\w\Utvekslingsfiler\ASSS\Pleie og omsorg\TTU\Mal;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BF7358CD-31B2-4193-9C9D-B23C7DB1741A}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExcelFile">
+      <DTS:VariableValue
+        DTS:DataType="8">\\ks-sql2018\w\Utvekslingsfiler\ASSS\Pleie og omsorg\TTU\Mal</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{971F4B18-E46C-4F40-893D-1A4468B54D77}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExtProperties">
+      <DTS:VariableValue
+        DTS:DataType="8">Excel 12.0; HDR=Yes</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0BAB1F2B-910C-4E30-BA1D-18EEBA9B6B43}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;Select * From [&quot; + @[User::Tabellnavn] + &quot;]&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SqlSpørring">
+      <DTS:VariableValue
+        DTS:DataType="8">Select * From [KS_TTU01 Manuelle data]</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BECDEB51-7E1E-4AC6-A653-B60B7AD30317}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Tabellnavn">
+      <DTS:VariableValue
+        DTS:DataType="8">KS_TTU01 Manuelle data</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Foreach Loop Container"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{750F98FA-790C-4FC1-BE9E-2895D8BECD7D}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach Loop Container">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{A5AD9198-42C0-452E-80CC-257F3AE8590D}"
+        DTS:ObjectName="{A5AD9198-42C0-452E-80CC-257F3AE8590D}">
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="\\ks-sql2018\w\Utvekslingsfiler\ASSS\Pleie og omsorg\TTU" />
+            <FEFEProperty
+              FileSpec="*.xlsx*" />
+            <FEFEProperty
+              FileNameRetrievalType="0" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Les inn data"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{0711923C-E280-490A-B816-726A0E8232ED}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Les inn data"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Foreach Loop Container\Les inn data\Data Conversion"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Data Conversion"
+                  name="Data Conversion"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container\Les inn data\Data Conversion.Inputs[Data Conversion Input]"
+                      name="Data Conversion Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Data Conversion.Inputs[Data Conversion Input].Columns[Kommunenummer]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Kommunenummer"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].Columns[Kommunenummer]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Data Conversion.Inputs[Data Conversion Input].Columns[Variabelnavn]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Variabelnavn"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].Columns[Variabelnavn]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Data Conversion.Inputs[Data Conversion Input].Columns[Kilde]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Kilde"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].Columns[Kilde]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Data Conversion.Inputs[Data Conversion Input].Columns[År]"
+                          cachedDataType="r8"
+                          cachedName="År"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].Columns[År]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output]"
+                      exclusionGroup="1"
+                      name="Data Conversion Output"
+                      synchronousInputId="Package\Foreach Loop Container\Les inn data\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kommunenummer]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kommunenummer]"
+                          name="Conv_Kommunenummer"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].Columns[Kommunenummer]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Variabelnavn]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="150"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Variabelnavn]"
+                          name="Conv_Variabelnavn"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].Columns[Variabelnavn]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kilde]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="100"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kilde]"
+                          name="Conv_Kilde"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].Columns[Kilde]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_År]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_År]"
+                          name="Conv_År"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].Columns[År]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Data Conversion Error Output"
+                      synchronousInputId="Package\Foreach Loop Container\Les inn data\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container\Les inn data\Fjern Mal rad"
+                  componentClassID="Microsoft.ConditionalSplit"
+                  contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+                  name="Fjern Mal rad"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container\Les inn data\Fjern Mal rad.Inputs[Conditional Split Input]"
+                      description="Input to the Conditional Split Transformation"
+                      name="Conditional Split Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Fjern Mal rad.Inputs[Conditional Split Input].Columns[Kommunenummer]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Kommunenummer"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].Columns[Kommunenummer]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\Les inn data\Fjern Mal rad.Outputs[Uten malrad]"
+                      description="Output 1 of the Conditional Split Transformation"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="Uten malrad"
+                      synchronousInputId="Package\Foreach Loop Container\Les inn data\Fjern Mal rad.Inputs[Conditional Split Input]"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                          name="Expression">#{Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].Columns[Kommunenummer]} != "Tekst"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the friendly version of the expression. This expression version uses column names."
+                          expressionType="Notify"
+                          name="FriendlyExpression">Kommunenummer != "Tekst"</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                          name="EvaluationOrder">0</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\Les inn data\Fjern Mal rad.Outputs[Conditional Split Default Output]"
+                      description="Default Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      name="Conditional Split Default Output"
+                      synchronousInputId="Package\Foreach Loop Container\Les inn data\Fjern Mal rad.Inputs[Conditional Split Input]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsDefaultOut">true</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\Les inn data\Fjern Mal rad.Outputs[Conditional Split Error Output]"
+                      description="Error Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Conditional Split Error Output"
+                      synchronousInputId="Package\Foreach Loop Container\Les inn data\Fjern Mal rad.Inputs[Conditional Split Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Fjern Mal rad.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Fjern Mal rad.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Fjern Mal rad.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Fjern Mal rad.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container\Les inn data\KS_TTU01 Manuelle data"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="KS_TTU01 Manuelle data"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[KS_TTU01 Manuelle data]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach Loop Container\Les inn data\KS_TTU01 Manuelle data.Connections[OleDbConnection]"
+                      connectionManagerID="{87175433-C4F6-4E6D-9D6E-61FE32283CE9}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[KS-SQL2018 Staging ASSS]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container\Les inn data\KS_TTU01 Manuelle data.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\KS_TTU01 Manuelle data.Inputs[OLE DB Destination Input].Columns[Conv_Kommunenummer]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Conv_Kommunenummer"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Les inn data\KS_TTU01 Manuelle data.Inputs[OLE DB Destination Input].ExternalColumns[Kommunenummer]"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kommunenummer]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\KS_TTU01 Manuelle data.Inputs[OLE DB Destination Input].Columns[Conv_Variabelnavn]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="150"
+                          cachedName="Conv_Variabelnavn"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Les inn data\KS_TTU01 Manuelle data.Inputs[OLE DB Destination Input].ExternalColumns[Variabelnavn]"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Variabelnavn]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\KS_TTU01 Manuelle data.Inputs[OLE DB Destination Input].Columns[Conv_Kilde]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Conv_Kilde"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Les inn data\KS_TTU01 Manuelle data.Inputs[OLE DB Destination Input].ExternalColumns[Kilde]"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kilde]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\KS_TTU01 Manuelle data.Inputs[OLE DB Destination Input].Columns[Conv_År]"
+                          cachedDataType="i4"
+                          cachedName="Conv_År"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Les inn data\KS_TTU01 Manuelle data.Inputs[OLE DB Destination Input].ExternalColumns[År]"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_År]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\KS_TTU01 Manuelle data.Inputs[OLE DB Destination Input].Columns[Verdi]"
+                          cachedDataType="r8"
+                          cachedName="Verdi"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Les inn data\KS_TTU01 Manuelle data.Inputs[OLE DB Destination Input].ExternalColumns[Verdi]"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].Columns[Verdi]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Les inn data\KS_TTU01 Manuelle data.Inputs[OLE DB Destination Input].ExternalColumns[Kommunenummer]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Kommunenummer" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Les inn data\KS_TTU01 Manuelle data.Inputs[OLE DB Destination Input].ExternalColumns[Variabelnavn]"
+                          codePage="1252"
+                          dataType="str"
+                          length="150"
+                          name="Variabelnavn" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Les inn data\KS_TTU01 Manuelle data.Inputs[OLE DB Destination Input].ExternalColumns[Kilde]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Kilde" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Les inn data\KS_TTU01 Manuelle data.Inputs[OLE DB Destination Input].ExternalColumns[Verdi]"
+                          dataType="numeric"
+                          name="Verdi"
+                          precision="18"
+                          scale="1" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Les inn data\KS_TTU01 Manuelle data.Inputs[OLE DB Destination Input].ExternalColumns[År]"
+                          dataType="i4"
+                          name="År" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\Les inn data\KS_TTU01 Manuelle data.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Foreach Loop Container\Les inn data\KS_TTU01 Manuelle data.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\KS_TTU01 Manuelle data.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Les inn data\KS_TTU01 Manuelle data.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\KS_TTU01 Manuelle data.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Les inn data\KS_TTU01 Manuelle data.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU"
+                  componentClassID="Microsoft.ExcelSource"
+                  contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Excel Source"
+                  name="Manuelle data TTU"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">Data$</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mapping from parameters in the SQL command to variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Mal]"
+                      connectionManagerRefId="Package.ConnectionManagers[Mal]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output]"
+                      name="Excel Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].Columns[Kommunenummer]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].ExternalColumns[Kommunenummer]"
+                          length="255"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].Columns[Kommunenummer]"
+                          name="Kommunenummer"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].Columns[Variabelnavn]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].ExternalColumns[Variabelnavn]"
+                          length="255"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].Columns[Variabelnavn]"
+                          name="Variabelnavn"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].Columns[Kilde]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].ExternalColumns[Kilde]"
+                          length="255"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].Columns[Kilde]"
+                          name="Kilde"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].Columns[År]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].ExternalColumns[År]"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].Columns[År]"
+                          name="År"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].Columns[Verdi]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].ExternalColumns[Verdi]"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].Columns[Verdi]"
+                          name="Verdi"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].ExternalColumns[Kommunenummer]"
+                          dataType="wstr"
+                          length="255"
+                          name="Kommunenummer" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].ExternalColumns[Variabelnavn]"
+                          dataType="wstr"
+                          length="255"
+                          name="Variabelnavn" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].ExternalColumns[Kilde]"
+                          dataType="wstr"
+                          length="255"
+                          name="Kilde" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].ExternalColumns[År]"
+                          dataType="r8"
+                          name="År" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].ExternalColumns[Verdi]"
+                          dataType="r8"
+                          name="Verdi" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Error Output]"
+                      isErrorOut="true"
+                      name="Excel Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Error Output].Columns[Kommunenummer]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Error Output].Columns[Kommunenummer]"
+                          name="Kommunenummer" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Error Output].Columns[Variabelnavn]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Error Output].Columns[Variabelnavn]"
+                          name="Variabelnavn" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Error Output].Columns[Kilde]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Error Output].Columns[Kilde]"
+                          name="Kilde" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Error Output].Columns[År]"
+                          dataType="r8"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Error Output].Columns[År]"
+                          name="År" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Error Output].Columns[Verdi]"
+                          dataType="r8"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Error Output].Columns[Verdi]"
+                          name="Verdi" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier"
+                  componentClassID="Microsoft.OLEDBCommand"
+                  contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+                  name="Oppdater nye verdier"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Update [dbo].[KS_TTU01 Manuelle data]
+     Set Kommunenummer = ?,
+            Variabelnavn = ?,
+            Kilde = ?,
+            År = ?,
+            Verdi = ?
+Where Kommunenummer = ?
+AND Variabelnavn = ?
+AND Kilde = ?
+AND År = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Connections[OleDbConnection]"
+                      connectionManagerID="{87175433-C4F6-4E6D-9D6E-61FE32283CE9}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[KS-SQL2018 Staging ASSS]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Inputs[OLE DB Command Input]"
+                      errorOrTruncationOperation="Command Execution"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Command Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Inputs[OLE DB Command Input].Columns[LkUp_Variabelnavn]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="150"
+                          cachedName="LkUp_Variabelnavn"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Outputs[Matchende rader].Columns[LkUp_Variabelnavn]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Inputs[OLE DB Command Input].Columns[LkUp_Kilde]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="LkUp_Kilde"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Outputs[Matchende rader].Columns[LkUp_Kilde]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Inputs[OLE DB Command Input].Columns[LkUp_År]"
+                          cachedDataType="i4"
+                          cachedName="LkUp_År"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Outputs[Matchende rader].Columns[LkUp_År]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Inputs[OLE DB Command Input].Columns[Verdi]"
+                          cachedDataType="r8"
+                          cachedName="Verdi"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].Columns[Verdi]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Inputs[OLE DB Command Input].Columns[Conv_Kommunenummer]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Conv_Kommunenummer"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kommunenummer]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Inputs[OLE DB Command Input].Columns[Conv_Variabelnavn]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="150"
+                          cachedName="Conv_Variabelnavn"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Variabelnavn]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Inputs[OLE DB Command Input].Columns[LkUp_Kommunenummer]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="LkUp_Kommunenummer"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Outputs[Matchende rader].Columns[LkUp_Kommunenummer]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Inputs[OLE DB Command Input].Columns[Conv_Kilde]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Conv_Kilde"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kilde]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Inputs[OLE DB Command Input].Columns[Conv_År]"
+                          cachedDataType="i4"
+                          cachedName="Conv_År"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_År]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Param_0">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="150"
+                          name="Param_1">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Param_2">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                          dataType="i4"
+                          name="Param_3">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                          dataType="numeric"
+                          name="Param_4"
+                          precision="18"
+                          scale="1">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Param_5">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                          codePage="1252"
+                          dataType="str"
+                          length="150"
+                          name="Param_6">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Param_7">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                          dataType="i4"
+                          name="Param_8">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Outputs[OLE DB Command Output]"
+                      exclusionGroup="1"
+                      name="OLE DB Command Output"
+                      synchronousInputId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Inputs[OLE DB Command Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Outputs[OLE DB Command Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Command Error Output"
+                      synchronousInputId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Inputs[OLE DB Command Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container\Les inn data\Sjekk etter nye verdier"
+                  componentClassID="Microsoft.ConditionalSplit"
+                  contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+                  name="Sjekk etter nye verdier"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container\Les inn data\Sjekk etter nye verdier.Inputs[Conditional Split Input]"
+                      description="Input to the Conditional Split Transformation"
+                      name="Conditional Split Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Sjekk etter nye verdier.Inputs[Conditional Split Input].Columns[Verdi]"
+                          cachedDataType="r8"
+                          cachedName="Verdi"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].Columns[Verdi]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Sjekk etter nye verdier.Inputs[Conditional Split Input].Columns[Conv_Kommunenummer]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Conv_Kommunenummer"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kommunenummer]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Sjekk etter nye verdier.Inputs[Conditional Split Input].Columns[Conv_Variabelnavn]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="150"
+                          cachedName="Conv_Variabelnavn"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Variabelnavn]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Sjekk etter nye verdier.Inputs[Conditional Split Input].Columns[Conv_Kilde]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Conv_Kilde"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kilde]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Sjekk etter nye verdier.Inputs[Conditional Split Input].Columns[Conv_År]"
+                          cachedDataType="i4"
+                          cachedName="Conv_År"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_År]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Sjekk etter nye verdier.Inputs[Conditional Split Input].Columns[LkUp_Kommunenummer]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="LkUp_Kommunenummer"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Outputs[Matchende rader].Columns[LkUp_Kommunenummer]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Sjekk etter nye verdier.Inputs[Conditional Split Input].Columns[LkUp_Variabelnavn]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="150"
+                          cachedName="LkUp_Variabelnavn"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Outputs[Matchende rader].Columns[LkUp_Variabelnavn]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Sjekk etter nye verdier.Inputs[Conditional Split Input].Columns[LkUp_Kilde]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="LkUp_Kilde"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Outputs[Matchende rader].Columns[LkUp_Kilde]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Sjekk etter nye verdier.Inputs[Conditional Split Input].Columns[LkUp_År]"
+                          cachedDataType="i4"
+                          cachedName="LkUp_År"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Outputs[Matchende rader].Columns[LkUp_År]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Sjekk etter nye verdier.Inputs[Conditional Split Input].Columns[LkUp_Verdi]"
+                          cachedDataType="numeric"
+                          cachedName="LkUp_Verdi"
+                          cachedPrecision="18"
+                          cachedScale="1"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Outputs[Matchende rader].Columns[LkUp_Verdi]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\Les inn data\Sjekk etter nye verdier.Outputs[Oppdaterte rader]"
+                      description="Output 6 of the Conditional Split Transformation"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="Oppdaterte rader"
+                      synchronousInputId="Package\Foreach Loop Container\Les inn data\Sjekk etter nye verdier.Inputs[Conditional Split Input]"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                          name="Expression">#{Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kommunenummer]} == #{Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Outputs[Matchende rader].Columns[LkUp_Kommunenummer]} &amp;&amp; #{Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Variabelnavn]} == #{Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Outputs[Matchende rader].Columns[LkUp_Variabelnavn]} &amp;&amp; #{Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kilde]} == #{Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Outputs[Matchende rader].Columns[LkUp_Kilde]} &amp;&amp; #{Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_År]} == #{Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Outputs[Matchende rader].Columns[LkUp_År]} &amp;&amp; (DT_NUMERIC,18,1)#{Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output].Columns[Verdi]} != #{Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Outputs[Matchende rader].Columns[LkUp_Verdi]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the friendly version of the expression. This expression version uses column names."
+                          expressionType="Notify"
+                          name="FriendlyExpression">Conv_Kommunenummer == LkUp_Kommunenummer &amp;&amp; Conv_Variabelnavn == LkUp_Variabelnavn &amp;&amp; Conv_Kilde == LkUp_Kilde &amp;&amp; [Conv_År] == [LkUp_År] &amp;&amp; (DT_NUMERIC,18,1)Verdi != LkUp_Verdi</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                          name="EvaluationOrder">0</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\Les inn data\Sjekk etter nye verdier.Outputs[Ikke bruk (default)]"
+                      description="Default Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      name="Ikke bruk (default)"
+                      synchronousInputId="Package\Foreach Loop Container\Les inn data\Sjekk etter nye verdier.Inputs[Conditional Split Input]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsDefaultOut">true</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\Les inn data\Sjekk etter nye verdier.Outputs[Conditional Split Error Output]"
+                      description="Error Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Conditional Split Error Output"
+                      synchronousInputId="Package\Foreach Loop Container\Les inn data\Sjekk etter nye verdier.Inputs[Conditional Split Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Sjekk etter nye verdier.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Sjekk etter nye verdier.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Sjekk etter nye verdier.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Sjekk etter nye verdier.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="Sjekk rader opp mot tabell i databasen"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[KS_TTU01 Manuelle data]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * 
+from (select * from [dbo].[KS_TTU01 Manuelle data]) [refTable] 
+
+where [refTable].[Kommunenummer] = ? 
+and [refTable].[Variabelnavn] = ? 
+and [refTable].[Kilde] = ? 
+and [refTable].[År] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Kommunenummer" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Variabelnavn" dataType="DT_STR" length="150" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Kilde" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="År" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Verdi" dataType="DT_NUMERIC" length="0" precision="18" scale="1" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kommunenummer]};#{Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Variabelnavn]};#{Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kilde]};#{Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_År]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Connections[OleDbConnection]"
+                      connectionManagerID="{87175433-C4F6-4E6D-9D6E-61FE32283CE9}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[KS-SQL2018 Staging ASSS]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Inputs[Lookup Input].Columns[Conv_Kommunenummer]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Conv_Kommunenummer"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kommunenummer]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">Kommunenummer</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Inputs[Lookup Input].Columns[Conv_Variabelnavn]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="150"
+                          cachedName="Conv_Variabelnavn"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Variabelnavn]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">Variabelnavn</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Inputs[Lookup Input].Columns[Conv_Kilde]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Conv_Kilde"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kilde]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">Kilde</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Inputs[Lookup Input].Columns[Conv_År]"
+                          cachedDataType="i4"
+                          cachedName="Conv_År"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_År]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">År</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Outputs[Matchende rader]"
+                      errorOrTruncationOperation="Lookup"
+                      exclusionGroup="1"
+                      name="Matchende rader"
+                      synchronousInputId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Outputs[Matchende rader].Columns[LkUp_Kommunenummer]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Copy Column"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Outputs[Matchende rader].Columns[LkUp_Kommunenummer]"
+                          name="LkUp_Kommunenummer"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">Kommunenummer</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Outputs[Matchende rader].Columns[LkUp_Variabelnavn]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Copy Column"
+                          length="150"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Outputs[Matchende rader].Columns[LkUp_Variabelnavn]"
+                          name="LkUp_Variabelnavn"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">Variabelnavn</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Outputs[Matchende rader].Columns[LkUp_Kilde]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Copy Column"
+                          length="100"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Outputs[Matchende rader].Columns[LkUp_Kilde]"
+                          name="LkUp_Kilde"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">Kilde</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Outputs[Matchende rader].Columns[LkUp_År]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Outputs[Matchende rader].Columns[LkUp_År]"
+                          name="LkUp_År"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">År</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Outputs[Matchende rader].Columns[LkUp_Verdi]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Outputs[Matchende rader].Columns[LkUp_Verdi]"
+                          name="LkUp_Verdi"
+                          precision="18"
+                          scale="1"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">Verdi</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Outputs[Ikke matchende rader]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Ikke matchende rader"
+                      synchronousInputId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Foreach Loop Container\Les inn data.Paths[Data Conversion Output]"
+                  endId="Package\Foreach Loop Container\Les inn data\Fjern Mal rad.Inputs[Conditional Split Input]"
+                  name="Data Conversion Output"
+                  startId="Package\Foreach Loop Container\Les inn data\Data Conversion.Outputs[Data Conversion Output]" />
+                <path
+                  refId="Package\Foreach Loop Container\Les inn data.Paths[Excel Source Output]"
+                  endId="Package\Foreach Loop Container\Les inn data\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Excel Source Output"
+                  startId="Package\Foreach Loop Container\Les inn data\Manuelle data TTU.Outputs[Excel Source Output]" />
+                <path
+                  refId="Package\Foreach Loop Container\Les inn data.Paths[Ikke matchende rader]"
+                  endId="Package\Foreach Loop Container\Les inn data\KS_TTU01 Manuelle data.Inputs[OLE DB Destination Input]"
+                  name="Ikke matchende rader"
+                  startId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Outputs[Ikke matchende rader]" />
+                <path
+                  refId="Package\Foreach Loop Container\Les inn data.Paths[Matchende rader]"
+                  endId="Package\Foreach Loop Container\Les inn data\Sjekk etter nye verdier.Inputs[Conditional Split Input]"
+                  name="Matchende rader"
+                  startId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Outputs[Matchende rader]" />
+                <path
+                  refId="Package\Foreach Loop Container\Les inn data.Paths[Oppdaterte rader]"
+                  endId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Inputs[OLE DB Command Input]"
+                  name="Oppdaterte rader"
+                  startId="Package\Foreach Loop Container\Les inn data\Sjekk etter nye verdier.Outputs[Oppdaterte rader]" />
+                <path
+                  refId="Package\Foreach Loop Container\Les inn data.Paths[Uten malrad]"
+                  endId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Inputs[Lookup Input]"
+                  name="Uten malrad"
+                  startId="Package\Foreach Loop Container\Les inn data\Fjern Mal rad.Outputs[Uten malrad]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{03EE5790-901F-4C77-809B-E84C74BB90EB}"
+          DTS:ObjectName="{03EE5790-901F-4C77-809B-E84C74BB90EB}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::ExcelFile" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="137.333333333334,42.6666666666667"
+          Id="Package\Foreach Loop Container\Les inn data"
+          TopLeft="45.5833296639225,17.3333306988081" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="241.333333333334,122.666666666667"
+          Size="241.333333333334,166"
+          Id="Package\Foreach Loop Container"
+          TopLeft="200.416663680226,87.0999984425307" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Foreach Loop Container\Les inn data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="262.666666666667,42.6666666666667"
+          Id="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen"
+          TopLeft="318.124995259568,236.058329112281" />
+        <NodeLayout
+          Size="157.333333333334,42.6666666666667"
+          Id="Package\Foreach Loop Container\Les inn data\Data Conversion"
+          TopLeft="368.020827849395,84.2833318262303" />
+        <NodeLayout
+          Size="197.333333333334,42.6666666666667"
+          Id="Package\Foreach Loop Container\Les inn data\KS_TTU01 Manuelle data"
+          TopLeft="112.083331663161,296.724994694143" />
+        <NodeLayout
+          Size="186.666666666667,42.6666666666667"
+          Id="Package\Foreach Loop Container\Les inn data\Sjekk etter nye verdier"
+          TopLeft="587.708324575797,298.13332846721" />
+        <NodeLayout
+          Size="168,42.6666666666667"
+          Id="Package\Foreach Loop Container\Les inn data\Manuelle data TTU"
+          TopLeft="365.937494547107,16.4666663722198" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Les inn data.Paths[Excel Source Output]"
+          TopLeft="448.312494531584,59.1333330388864">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25.1499987873438"
+              Start="0,0"
+              End="0,17.6499987873438">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.6499987873438" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Les inn data.Paths[Ikke matchende rader]"
+          TopLeft="318.124995259568,257.391662445614">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-107.37499692974,39.3333322485291"
+              Start="0,0"
+              End="-107.37499692974,31.8333322485291">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-103.37499692974,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-103.37499692974,0"
+                    Point2="-107.37499692974,0"
+                    Point3="-107.37499692974,4" />
+                  <mssgle:LineSegment
+                    End="-107.37499692974,31.8333322485291" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-156.75528989849,-15.7490234375,98.7605859375,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Les inn data.Paths[Matchende rader]"
+          TopLeft="580.791661926235,257.391662445614">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="100.249995982896,40.7416660215957"
+              Start="0,0"
+              End="100.249995982896,33.2416660215957">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="96.2499959828958,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="96.2499959828958,0"
+                    Point2="100.249995982896,0"
+                    Point3="100.249995982896,4" />
+                  <mssgle:LineSegment
+                    End="100.249995982896,33.2416660215957" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="62.3963045766458,-15.7490234375,75.7073828125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="180,42.6666666666667"
+          Id="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier"
+          TopLeft="595.72915778961,373.891662174413" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Les inn data.Paths[Oppdaterte rader]"
+          TopLeft="683.38540784937,340.799995133877">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.0916670405367"
+              Start="0,0"
+              End="0,25.5916670405367">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5916670405367" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-38.8612109375,6.99114602026833,77.722421875,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="141.333333333334,42.6666666666667"
+          Id="Package\Foreach Loop Container\Les inn data\Fjern Mal rad"
+          TopLeft="377.187494379468,155.674997216314" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Les inn data.Paths[Data Conversion Output]"
+          TopLeft="447.270827781098,126.949998492897">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28.7249987234174"
+              Start="0,0"
+              End="0,21.2249987234174">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.2249987234174" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Les inn data.Paths[Uten malrad]"
+          TopLeft="448.656244819518,198.341663882981">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.7166652293001"
+              Start="0,0"
+              End="0,30.2166652293001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.2166652293001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-27.43693359375,10.2338208959,54.8738671875,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\Les inn data\Manuelle data TTU">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\Les inn data\KS_TTU01 Manuelle data">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">true</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[KS_TTU01 Manuelle data]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
