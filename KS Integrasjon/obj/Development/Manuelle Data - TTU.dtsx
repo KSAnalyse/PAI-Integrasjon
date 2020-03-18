@@ -420,8 +420,8 @@
                   <connections>
                     <connection
                       refId="Package\Foreach Loop Container\Les inn data\KS_TTU01 Manuelle data.Connections[OleDbConnection]"
-                      connectionManagerID="{87175433-C4F6-4E6D-9D6E-61FE32283CE9}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[KS-SQL2018 Staging ASSS]"
+                      connectionManagerID="{87175433-C4F6-4E6D-9D6E-61FE32283CE9}:invalid"
+                      connectionManagerRefId="{87175433-C4F6-4E6D-9D6E-61FE32283CE9}:invalid"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -743,8 +743,8 @@ AND År = ?</property>
                   <connections>
                     <connection
                       refId="Package\Foreach Loop Container\Les inn data\Oppdater nye verdier.Connections[OleDbConnection]"
-                      connectionManagerID="{87175433-C4F6-4E6D-9D6E-61FE32283CE9}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[KS-SQL2018 Staging ASSS]"
+                      connectionManagerID="{87175433-C4F6-4E6D-9D6E-61FE32283CE9}:invalid"
+                      connectionManagerRefId="{87175433-C4F6-4E6D-9D6E-61FE32283CE9}:invalid"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -1196,8 +1196,8 @@ and [refTable].[År] = ?</property>
                   <connections>
                     <connection
                       refId="Package\Foreach Loop Container\Les inn data\Sjekk rader opp mot tabell i databasen.Connections[OleDbConnection]"
-                      connectionManagerID="{87175433-C4F6-4E6D-9D6E-61FE32283CE9}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[KS-SQL2018 Staging ASSS]"
+                      connectionManagerID="{87175433-C4F6-4E6D-9D6E-61FE32283CE9}:invalid"
+                      connectionManagerRefId="{87175433-C4F6-4E6D-9D6E-61FE32283CE9}:invalid"
                       description="Connection manager used to access lookup data."
                       name="OleDbConnection" />
                   </connections>
