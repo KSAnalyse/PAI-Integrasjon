@@ -31,8 +31,8 @@
         <SSIS:Packages>
           <SSIS:Package SSIS:Name="Deploy.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="SSB Regioner.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="Manuelle data - TTU.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="Årsverk.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Foreach mal.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Filer - Årsverk.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="ks-sql2018.Staging_PAI.conmgr" />
@@ -135,10 +135,10 @@
                 <SSIS:Property SSIS:Name="Name">Deploy</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">19</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">27</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{E48ADF05-786B-4D5C-BB47-BCC30988FE6A}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{C34BAF64-F563-4736-841E-BF2C689C3C8A}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -156,7 +156,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">Data Source=KS-SQL2018;Initial Catalog=Tabular Views;Provider=MSOLAP.8;Integrated Security=SSPI;Impersonation Level=Impersonate;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">Data Source=KS-SQL2018;User ID=KSINT\8093AHA;Initial Catalog=PAI data;Provider=MSOLAP.8;Persist Security Info=False;Impersonation Level=Impersonate;</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -171,7 +171,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">Tabular Views</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">PAI data</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -230,6 +230,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">KSINT\8093AHA</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -252,16 +253,16 @@
               </SSIS:Properties>
               <SSIS:Parameters />
             </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="Manuelle data - TTU.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="Foreach mal.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{3B0346E8-DD73-4526-B572-3919B6F38499}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Manuelle data - TTU</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{F90274A8-9122-450F-83C0-478D77D05886}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Foreach mal</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">75</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">76</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{E6B29EB4-F10C-494B-9E08-8822B799B63E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{53EC9A8B-6AF0-4960-85F7-AD13706D172A}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -372,16 +373,16 @@
                 </SSIS:Parameter>
               </SSIS:Parameters>
             </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="Årsverk.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="Filer - Årsverk.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{ACDB9352-1AC1-49F7-97AB-00CF5FBD4FE0}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Årsverk</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{7BCBC0F8-07E9-4E30-9E23-464366A5A924}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Filer - Årsverk</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">56</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">69</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{BB5F11CE-7A9B-4097-851E-9F78A9FF0647}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{CB1E2CCA-555F-4B0C-B0F5-48E096095E38}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>

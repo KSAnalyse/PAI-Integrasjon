@@ -1,19 +1,19 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="3/17/2020 10:32:51 AM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="UTLAAN17-X1G3"
   DTS:CreatorName="KSINT\8093AHA"
-  DTS:DTSID="{ACDB9352-1AC1-49F7-97AB-00CF5FBD4FE0}"
+  DTS:DTSID="{7BCBC0F8-07E9-4E30-9E23-464366A5A924}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="14.0.3026.27"
   DTS:LocaleID="1044"
-  DTS:ObjectName="Årsverk"
+  DTS:ObjectName="Filer - Årsverk"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="68"
-  DTS:VersionGUID="{8726187C-FACD-442A-8DC8-EF74DB79FF69}">
+  DTS:VersionBuild="69"
+  DTS:VersionGUID="{CB1E2CCA-555F-4B0C-B0F5-48E096095E38}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -2532,7 +2532,7 @@ and [refTable].[År] = ? and [refTable].[Sektor] = ? and [refTable].[Kjønn] = ?
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">true</Value>
+          type="q2:string">true</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2542,7 +2542,7 @@ and [refTable].[År] = ? and [refTable].[Sektor] = ? and [refTable].[Kjønn] = ?
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

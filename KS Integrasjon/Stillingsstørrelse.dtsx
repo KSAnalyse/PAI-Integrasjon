@@ -5,22 +5,22 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="UTLAAN17-X1G3"
   DTS:CreatorName="KSINT\8093AHA"
-  DTS:DTSID="{ACDB9352-1AC1-49F7-97AB-00CF5FBD4FE0}"
+  DTS:DTSID="{C18B7CC2-8F5F-48C3-81C8-DE0B55EBC19F}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="14.0.3026.27"
   DTS:LocaleID="1044"
-  DTS:ObjectName="Årsverk"
+  DTS:ObjectName="Stillingsstørrelse"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="66"
-  DTS:VersionGUID="{53E9B525-9D0F-4501-9CD9-DA8EE78EC693}">
+  DTS:VersionBuild="69"
+  DTS:VersionGUID="{274477F1-77CA-4CC6-8AE8-3BC30D31A824}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[Mal]"
       DTS:CreationName="EXCEL"
-      DTS:DTSID="{21541D6D-925B-4FA6-8EEE-91DBD2777451}"
+      DTS:DTSID="{5517BE11-3463-48CA-A84E-E40274B72171}"
       DTS:ObjectName="Mal">
       <DTS:PropertyExpression
         DTS:Name="ConnectionString">"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" +  @[User::ExcelFile] + ";Extended Properties=\"" + @[User::ExtProperties] + "\""</DTS:PropertyExpression>
@@ -33,7 +33,7 @@
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{DABB44E0-FBF6-4072-8991-EAB1B391D53A}"
+      DTS:DTSID="{6E99690B-44C3-4D33-8FF1-D6834074E3CC}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="Arknavn">
@@ -42,7 +42,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{65A2C21C-624D-4364-97AA-B55C9E1ED9DE}"
+      DTS:DTSID="{3521701B-C5F9-440B-90EB-FC7161B531FB}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="DatabaseTabellnavn">
@@ -51,7 +51,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{A7D766BC-20E2-4F3A-AC7D-19ABACEB1D96}"
+      DTS:DTSID="{3CFBDA35-BF81-487B-A2ED-0DCFF5500E3C}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="&quot;[dbo].[&quot; + @[User::DatabaseTabellnavn] + &quot;]&quot;"
       DTS:IncludeInDebugDump="2345"
@@ -62,7 +62,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{FF688FD4-A5D1-458E-88BF-DF3DE88D3776}"
+      DTS:DTSID="{F8BCEB74-B792-48D1-9D2A-4133E5357C57}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="ExcelFile">
@@ -71,7 +71,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{45E2D152-2E6A-43E5-81A0-2F51102C40AB}"
+      DTS:DTSID="{AAAB29FE-9351-4DE8-B65A-78AABA7D555F}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="ExtProperties">
@@ -80,7 +80,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{D6CAF865-4325-4846-851B-A2B641D43178}"
+      DTS:DTSID="{F7113899-41A6-4CEB-9EC4-EE96CECA012F}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="ExtraDimensionSelect">
@@ -89,7 +89,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{855D2094-0F51-4397-BEF1-EEE06D21D705}"
+      DTS:DTSID="{1587B837-24E8-4765-B33A-CA06EC953AC4}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="ExtraDimensionWhere">
@@ -98,7 +98,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{CA95D381-ECD9-412C-B545-DFAFD40BFF6C}"
+      DTS:DTSID="{9D1B3FCA-347B-402F-AFE4-33FCA8008519}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="&quot;select * from &#xA;(&quot; +  @[User::SqlSpørring] +&quot;) [refTable] &#xA;where [refTable].[Kommunenummer] = ? &#xA;and [refTable].[Variabelnavn] = ? &#xA;and [refTable].[År] = ? and [refTable].[Sektor] = ? and [refTable].[Kjønn] = ? and [refTable].[Kompetansenivå] = ?&quot;"
       DTS:IncludeInDebugDump="2345"
@@ -113,7 +113,7 @@ and [refTable].[År] = ? and [refTable].[Sektor] = ? and [refTable].[Kjønn] = ?
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{B9784A13-D221-4302-91B7-27F328B9C69C}"
+      DTS:DTSID="{4D84D20D-931B-4FB9-AF22-E0E53192F51B}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="&quot;Select * From [&quot; + @[User::DatabaseTabellnavn] + &quot;]&quot;"
       DTS:IncludeInDebugDump="2345"
@@ -124,7 +124,7 @@ and [refTable].[År] = ? and [refTable].[Sektor] = ? and [refTable].[Kjønn] = ?
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{9C944523-C627-4206-8DA9-77F0A6430663}"
+      DTS:DTSID="{35456424-6846-4129-9872-9405BC500B42}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="&quot;Update &quot; + (DT_WSTR,128)@[User::DestinationTable] + &quot; Set Kommunenummer = ?,&#xA;            Variabelnavn = ?,&#xA;            År = ?, &quot; + (DT_WSTR,128)@[User::ExtraDimensionSelect] + &quot;&#xA; Verdi = ?&#xA; Where Kommunenummer = ?&#xA;AND Variabelnavn = ?&#xA;AND År = ? &quot; + (DT_WSTR,128)@[User::ExtraDimensionWhere]"
       DTS:IncludeInDebugDump="2345"
@@ -145,14 +145,14 @@ AND År = ? AND Sektor = ? AND Kjønn = ? AND Kompetansenivå = ?</DTS:VariableV
       DTS:refId="Package\Les alle filer"
       DTS:CreationName="STOCK:FOREACHLOOP"
       DTS:Description="Foreach Loop Container"
-      DTS:DTSID="{A6B085EB-B2E3-47E0-BCD3-15E88A1ABBD7}"
+      DTS:DTSID="{5B8CC1FA-51C4-481F-B400-9F3A689676AC}"
       DTS:ExecutableType="STOCK:FOREACHLOOP"
       DTS:LocaleID="-1"
       DTS:ObjectName="Les alle filer">
       <DTS:ForEachEnumerator
         DTS:CreationName="Microsoft.ForEachFileEnumerator"
-        DTS:DTSID="{DA8EDE8D-8A6B-4731-9441-49EAEE6E85C7}"
-        DTS:ObjectName="{DA8EDE8D-8A6B-4731-9441-49EAEE6E85C7}">
+        DTS:DTSID="{075DC47B-E5A5-436A-B8C9-74E0B803A764}"
+        DTS:ObjectName="{075DC47B-E5A5-436A-B8C9-74E0B803A764}">
         <DTS:ObjectData>
           <ForEachFileEnumeratorProperties>
             <FEFEProperty
@@ -172,7 +172,7 @@ AND År = ? AND Sektor = ? AND Kjønn = ? AND Kompetansenivå = ?</DTS:VariableV
           DTS:refId="Package\Les alle filer\Les inn data fra Excel"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
-          DTS:DTSID="{AD51F597-0E3C-475B-AB0F-5384F3FBAF84}"
+          DTS:DTSID="{D437FE3A-ED0A-44D0-BB04-0079E70C49E6}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
           DTS:ObjectName="Les inn data fra Excel"
@@ -181,11 +181,11 @@ AND År = ? AND Sektor = ? AND Kjønn = ? AND Kompetansenivå = ?</DTS:VariableV
           <DTS:PropertyExpression
             DTS:Name="[Oppdater nye verdier uten sammenligning].[SqlCommand]">@[User::UpdateSpørring]</DTS:PropertyExpression>
           <DTS:PropertyExpression
-            DTS:Name="[Oppdater nye verdier].[SqlCommand]">@[User::UpdateSpørring]</DTS:PropertyExpression>
-          <DTS:PropertyExpression
             DTS:Name="[Sjekk tabellen i databasen].[SqlCommand]">@[User::SqlSpørring]</DTS:PropertyExpression>
           <DTS:PropertyExpression
             DTS:Name="[Sjekk tabellen i databasen].[SqlCommandParam]">@[User::SqlParamSpørring]</DTS:PropertyExpression>
+          <DTS:PropertyExpression
+            DTS:Name="[Oppdater nye verdier].[SqlCommand]">@[User::UpdateSpørring]</DTS:PropertyExpression>
           <DTS:ObjectData>
             <pipeline
               version="1">
@@ -313,6 +313,28 @@ AND År = ? AND Sektor = ? AND Kjønn = ? AND Kompetansenivå = ?</DTS:VariableV
                           </properties>
                         </outputColumn>
                         <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Sektor]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="100"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Sektor]"
+                          name="Conv_Sektor"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Les alle filer\Les inn data fra Excel\Årsverk.Outputs[Excel Source Output].Columns[Sektor]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
                           refId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kjønn]"
                           codePage="1252"
                           dataType="str"
@@ -350,28 +372,6 @@ AND År = ? AND Sektor = ? AND Kjønn = ? AND Kompetansenivå = ?</DTS:VariableV
                               dataType="System.Int32"
                               description="Specifies the input column used as the source of data for the conversion."
                               name="SourceInputColumnLineageID">#{Package\Les alle filer\Les inn data fra Excel\Årsverk.Outputs[Excel Source Output].Columns[Kompetansenivå]}</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                              name="FastParse">false</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
-                          refId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Sektor]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          length="100"
-                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Sektor]"
-                          name="Conv_Sektor"
-                          truncationRowDisposition="FailComponent">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Specifies the input column used as the source of data for the conversion."
-                              name="SourceInputColumnLineageID">#{Package\Les alle filer\Les inn data fra Excel\Årsverk.Outputs[Excel Source Output].Columns[Sektor]}</property>
                             <property
                               dataType="System.Boolean"
                               description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -1697,7 +1697,7 @@ and [refTable].[År] = ? and [refTable].[Sektor] = ? and [refTable].[Kjønn] = ?
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                      name="ParameterMap">#{Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kommunenummer]};#{Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Variabelnavn]};#{Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_År]};#{Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kjønn]};#{Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kompetansenivå]};#{Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Sektor]};</property>
+                      name="ParameterMap">#{Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kommunenummer]};#{Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Variabelnavn]};#{Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_År]};#{Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Sektor]};#{Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kjønn]};#{Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kompetansenivå]};</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2253,8 +2253,8 @@ and [refTable].[År] = ? and [refTable].[Sektor] = ? and [refTable].[Kjønn] = ?
       <DTS:ForEachVariableMappings>
         <DTS:ForEachVariableMapping
           DTS:CreationName=""
-          DTS:DTSID="{2408ACF1-A9DF-4FA6-8F32-39940A913F6B}"
-          DTS:ObjectName="{2408ACF1-A9DF-4FA6-8F32-39940A913F6B}"
+          DTS:DTSID="{C4342010-DC08-4E1F-ADFC-8E6E1A211DBF}"
+          DTS:ObjectName="{C4342010-DC08-4E1F-ADFC-8E6E1A211DBF}"
           DTS:ValueIndex="0"
           DTS:VariableName="User::ExcelFile" />
       </DTS:ForEachVariableMappings>
@@ -2292,65 +2292,41 @@ and [refTable].[År] = ? and [refTable].[Sektor] = ? and [refTable].[Kjønn] = ?
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="114.666666666667,42.6666666666667"
-          Id="Package\Les alle filer\Les inn data fra Excel\Årsverk"
-          TopLeft="165.833330862224,26.4333328606686" />
-        <NodeLayout
-          Size="157.333333333334,42.6666666666667"
-          Id="Package\Les alle filer\Les inn data fra Excel\Data Conversion"
-          TopLeft="354.58332804963,31.6333327676852" />
-        <EdgeLayout
-          Id="Package\Les alle filer\Les inn data fra Excel.Paths[Excel Source Output]"
-          TopLeft="280.499997528891,50.3666661475102">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="74.0833305207391,0"
-              Start="0,0"
-              End="66.5833305207391,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="66.5833305207391,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="164,42.6666666666667"
+          Id="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell"
+          TopLeft="82.9166654311121,179.833330117663" />
         <NodeLayout
           Size="139.333333333334,42.6666666666667"
           Id="Package\Les alle filer\Les inn data fra Excel\Fjern malrad"
           TopLeft="363.749994579703,99.6666648844878" />
-        <EdgeLayout
-          Id="Package\Les alle filer\Les inn data fra Excel.Paths[Data Conversion Output]"
-          TopLeft="433.333327981333,74.2999994343519">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,25.3666654501359"
-              Start="0,0"
-              End="0,17.8666654501359">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,17.8666654501359" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
           Size="202.666666666667,42.6666666666667"
           Id="Package\Les alle filer\Les inn data fra Excel\Sjekk tabellen i databasen"
           TopLeft="338.333328291774,179.399996792078" />
+        <NodeLayout
+          Size="186.666666666667,42.6666666666667"
+          Id="Package\Les alle filer\Les inn data fra Excel\Sjekk etter null verdier"
+          TopLeft="340.833328254521,315.466661025683" />
+        <NodeLayout
+          Size="180,42.6666666666667"
+          Id="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier"
+          TopLeft="90.4166653193534,394.733329040607" />
+        <NodeLayout
+          Size="114.666666666667,42.6666666666667"
+          Id="Package\Les alle filer\Les inn data fra Excel\Årsverk"
+          TopLeft="165.833330862224,26.4333328606686" />
+        <NodeLayout
+          Size="179.333333333334,51.3333333333334"
+          Id="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning"
+          TopLeft="344.999994859099,395.766660769979" />
+        <NodeLayout
+          Size="173.333333333334,42.6666666666667"
+          Id="Package\Les alle filer\Les inn data fra Excel\Sammenlign verdier"
+          TopLeft="92.4999986216426,313.266663830678" />
+        <NodeLayout
+          Size="157.333333333334,42.6666666666667"
+          Id="Package\Les alle filer\Les inn data fra Excel\Data Conversion"
+          TopLeft="355.833328031004,31.1999994421005" />
         <EdgeLayout
           Id="Package\Les alle filer\Les inn data fra Excel.Paths[Uten malrad]"
           TopLeft="436.541661435738,142.333331551155">
@@ -2375,10 +2351,54 @@ and [refTable].[År] = ? and [refTable].[Sektor] = ? and [refTable].[Kjønn] = ?
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="164,42.6666666666667"
-          Id="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell"
-          TopLeft="82.9166654311121,179.833330117663" />
+        <EdgeLayout
+          Id="Package\Les alle filer\Les inn data fra Excel.Paths[Oppdaterte rader]"
+          TopLeft="179.791665303831,355.933330497345">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.7999985432623"
+              Start="0,0"
+              End="0,31.2999985432623">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.2999985432623" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-38.8612109375,9.84531177163117,77.722421875,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Les alle filer\Les inn data fra Excel.Paths[Nullverdier]"
+          TopLeft="434.41666155681,358.13332769235">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.6333330776293"
+              Start="0,0"
+              End="0,30.1333330776293">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.1333330776293" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-24.28369140625,10.1921548200646,48.5673828125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Les alle filer\Les inn data fra Excel.Paths[Lookup No Match Output]"
           TopLeft="338.333328291774,200.949996788204">
@@ -2403,10 +2423,6 @@ and [refTable].[År] = ? and [refTable].[Sektor] = ? and [refTable].[Kjønn] = ?
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="186.666666666667,42.6666666666667"
-          Id="Package\Les alle filer\Les inn data fra Excel\Sjekk etter null verdier"
-          TopLeft="340.833328254521,315.466661025683" />
         <EdgeLayout
           Id="Package\Les alle filer\Les inn data fra Excel.Paths[Lookup Match Output]"
           TopLeft="436.916661606481,222.066663458745">
@@ -2428,38 +2444,6 @@ and [refTable].[År] = ? and [refTable].[Sektor] = ? and [refTable].[Kjønn] = ?
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-48.19138671875,37.1453112834692,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="179.333333333334,51.3333333333334"
-          Id="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning"
-          TopLeft="344.999994859099,395.766660769979" />
-        <NodeLayout
-          Size="173.333333333334,42.6666666666667"
-          Id="Package\Les alle filer\Les inn data fra Excel\Sammenlign verdier"
-          TopLeft="92.4999986216426,313.266663830678" />
-        <EdgeLayout
-          Id="Package\Les alle filer\Les inn data fra Excel.Paths[Nullverdier]"
-          TopLeft="434.41666155681,358.13332769235">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,37.6333330776293"
-              Start="0,0"
-              End="0,30.1333330776293">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.1333330776293" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-24.28369140625,10.1921548200646,48.5673828125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2487,37 +2471,84 @@ and [refTable].[År] = ? and [refTable].[Sektor] = ? and [refTable].[Kjønn] = ?
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="180,42.6666666666667"
-          Id="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier"
-          TopLeft="90.4166653193534,394.733329040607" />
         <EdgeLayout
-          Id="Package\Les alle filer\Les inn data fra Excel.Paths[Oppdaterte rader]"
-          TopLeft="179.791665303831,355.933330497345">
+          Id="Package\Les alle filer\Les inn data fra Excel.Paths[Excel Source Output]"
+          TopLeft="280.499997528891,50.1499994847179">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,38.7999985432623"
+              EndConnector="75.3333305021129,0"
               Start="0,0"
-              End="0,31.2999985432623">
+              End="67.8333305021129,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.2999985432623" />
+                    End="67.8333305021129,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-38.8612109375,9.84531177163117,77.722421875,11.609375"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Les alle filer\Les inn data fra Excel.Paths[Data Conversion Output]"
+          TopLeft="433.95832797202,73.8666661087671">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25.7999987757207"
+              Start="0,0"
+              End="0,18.2999987757207">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.2999987757207" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Les alle filer\Les inn data fra Excel\Sjekk tabellen i databasen">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">true</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[KS_PAI01 Årsverk]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Les alle filer\Les inn data fra Excel\Årsverk">
     <Properties>
@@ -2528,37 +2559,6 @@ and [refTable].[År] = ? and [refTable].[Sektor] = ? and [refTable].[Kjønn] = ?
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Les alle filer\Les inn data fra Excel\Sjekk tabellen i databasen">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">true</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[KS_PAI01 Årsverk]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

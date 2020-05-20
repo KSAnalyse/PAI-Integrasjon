@@ -4,8 +4,8 @@
     <Configuration>
       <Name>Development</Name>
       <Options>
-        <ServerName>sqltest2018</ServerName>
-        <PathOnServer>/SSISDB/ASSS Integrasjon/ASSS Integrasjon</PathOnServer>
+        <ServerName>ks-sql2018</ServerName>
+        <PathOnServer>/SSISDB/PAI Integrasjon/PAI Integrasjon</PathOnServer>
         <UserIDs />
         <UserPasswords />
         <OfflineMode>false</OfflineMode>
