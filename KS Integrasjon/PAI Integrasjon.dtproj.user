@@ -8,8 +8,9 @@
         <UseWinAuth>false</UseWinAuth>
         <WinAuthUserName />
         <WinAuthDomain />
-        <ServerName>ks-sql2018</ServerName>
-        <PathOnServer>/SSISDB/PAI Integrasjon/PAI Integrasjon</PathOnServer>
+        <ServerName>vk-sxd0e-002</ServerName>
+        <PathOnServer>/SSISDB/PAI/PAI Integrasjon</PathOnServer>
+        <Run64BitRuntime>false</Run64BitRuntime>
         <UserIDs />
         <UserPasswords />
         <OfflineMode>false</OfflineMode>

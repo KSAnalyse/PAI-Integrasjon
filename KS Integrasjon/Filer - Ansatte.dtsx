@@ -1,0 +1,2791 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/17/2020 10:32:51 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="UTLAAN17-X1G3"
+  DTS:CreatorName="KSINT\8093AHA"
+  DTS:DTSID="{82A074A4-F3E5-4DD0-A269-A7D647CE9AAE}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.93"
+  DTS:LocaleID="1044"
+  DTS:ObjectName="Filer - Ansatte"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="109"
+  DTS:VersionGUID="{AE19361A-37BB-401E-B2B2-A5A7FF09CC2F}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Mal]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{0D71D4AD-DBCF-42F3-AB58-EF5F28FF921F}"
+      DTS:ObjectName="Mal">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" +  @[User::ExcelFile] + ";Extended Properties=\"" + @[User::ExtProperties] + "\""</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=E:\Utvekslingsfiler\PAI\Ansatte\Mal;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E7F4382D-0F2E-43A7-BA66-EAC83F169DD5}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Arknavn">
+      <DTS:VariableValue
+        DTS:DataType="8">Ark1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{39CEE734-7540-47AF-9FCD-2A361293C2E9}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="DatabaseTabellnavn">
+      <DTS:VariableValue
+        DTS:DataType="8">KS_PAI04 Ansatte</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0EDB9308-A224-4D4A-8D56-F3DF6E27CCA4}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;[dbo].[&quot; + @[User::DatabaseTabellnavn] + &quot;]&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="DestinationTable">
+      <DTS:VariableValue
+        DTS:DataType="8">[dbo].[KS_PAI04 Ansatte]</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5CBC49F8-EE96-4545-B36E-725DF8080073}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExcelFile">
+      <DTS:VariableValue
+        DTS:DataType="8">E:\Utvekslingsfiler\PAI\Ansatte\Mal</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7990E616-0A07-4EDD-970C-74F2AAB9101C}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExtProperties">
+      <DTS:VariableValue
+        DTS:DataType="8">Excel 12.0; HDR=Yes</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B7005903-EECF-4B62-A94A-9491BDF2523A}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExtraDimensionSelect">
+      <DTS:VariableValue
+        DTS:DataType="8">Sektor = ?, Kjønn = ?, Kompetansenivå = ?, Turnus = ?,</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6B317E44-DB52-463B-B668-7CC13F1A6B96}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExtraDimensionWhere">
+      <DTS:VariableValue
+        DTS:DataType="8">AND Sektor = ? AND Kjønn = ? AND Kompetansenivå = ? AND Turnus = ?</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A1C91553-2CA4-46ED-A06C-57662B3A5453}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;select * from &#xA;(&quot; +  @[User::SqlSpørring] +&quot;) [refTable] &#xA;where [refTable].[Kommunenummer] = ? &#xA;and [refTable].[Variabelnavn] = ? &#xA;and [refTable].[År] = ? and [refTable].[Sektor] = ? and [refTable].[Kjønn] = ? and [refTable].[Kompetansenivå] = ? and [refTable].[Turnus] = ?&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SqlParamSpørring">
+      <DTS:VariableValue
+        DTS:DataType="8">select * from 
+(Select * From [KS_PAI04 Ansatte]) [refTable] 
+where [refTable].[Kommunenummer] = ? 
+and [refTable].[Variabelnavn] = ? 
+and [refTable].[År] = ? and [refTable].[Sektor] = ? and [refTable].[Kjønn] = ? and [refTable].[Kompetansenivå] = ? and [refTable].[Turnus] = ?</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5FE38CB1-74EB-44A1-B39F-44FCA754442F}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;Select * From [&quot; + @[User::DatabaseTabellnavn] + &quot;]&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SqlSpørring">
+      <DTS:VariableValue
+        DTS:DataType="8">Select * From [KS_PAI04 Ansatte]</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7CFADCBA-547E-4946-A7B2-4F247620BAB5}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;Update &quot; + (DT_WSTR,128)@[User::DestinationTable] + &quot; Set Kommunenummer = ?,&#xA;            Variabelnavn = ?,&#xA;            År = ?, &quot; + (DT_WSTR,128)@[User::ExtraDimensionSelect] + &quot;&#xA; Verdi = ?&#xA; Where Kommunenummer = ?&#xA;AND Variabelnavn = ?&#xA;AND År = ? &quot; + (DT_WSTR,128)@[User::ExtraDimensionWhere]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="UpdateSpørring">
+      <DTS:VariableValue
+        DTS:DataType="8">Update [dbo].[KS_PAI04 Ansatte] Set Kommunenummer = ?,
+            Variabelnavn = ?,
+            År = ?, Sektor = ?, Kjønn = ?, Kompetansenivå = ?, Turnus = ?,
+ Verdi = ?
+ Where Kommunenummer = ?
+AND Variabelnavn = ?
+AND År = ? AND Sektor = ? AND Kjønn = ? AND Kompetansenivå = ? AND Turnus = ?</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Les alle filer"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{188CC2DB-6733-4289-8193-4C64B1FEC717}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Les alle filer">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{ADEC0802-463B-4685-B816-B3EAD4BED5AB}"
+        DTS:ObjectName="{ADEC0802-463B-4685-B816-B3EAD4BED5AB}">
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="E:\Utvekslingsfiler\PAI\Ansatte" />
+            <FEFEProperty
+              FileSpec="*.xlsx*" />
+            <FEFEProperty
+              FileNameRetrievalType="0" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Les alle filer\Les inn data fra Excel"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{F6E12D55-BCB8-4249-81DB-80E6CFE68973}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Les inn data fra Excel"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:PropertyExpression
+            DTS:Name="[Oppdater nye verdier].[SqlCommand]">@[User::UpdateSpørring]</DTS:PropertyExpression>
+          <DTS:PropertyExpression
+            DTS:Name="[Oppdater nye verdier uten sammenligning].[SqlCommand]">@[User::UpdateSpørring]</DTS:PropertyExpression>
+          <DTS:PropertyExpression
+            DTS:Name="[Lookup].[SqlCommand]">@[User::SqlSpørring]</DTS:PropertyExpression>
+          <DTS:PropertyExpression
+            DTS:Name="[Lookup].[SqlCommandParam]">@[User::SqlParamSpørring]</DTS:PropertyExpression>
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Les alle filer\Les inn data fra Excel\Ansatte"
+                  componentClassID="Microsoft.ExcelSource"
+                  contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Excel Source"
+                  name="Ansatte"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">Ark1$</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mapping from parameters in the SQL command to variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Mal]"
+                      connectionManagerRefId="Package.ConnectionManagers[Mal]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output]"
+                      name="Excel Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Kommunenummer]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].ExternalColumns[Kommunenummer]"
+                          length="255"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Kommunenummer]"
+                          name="Kommunenummer"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Variabelnavn]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].ExternalColumns[Variabelnavn]"
+                          length="255"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Variabelnavn]"
+                          name="Variabelnavn"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[År]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].ExternalColumns[År]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[År]"
+                          name="År"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Kjønn]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].ExternalColumns[Kjønn]"
+                          length="255"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Kjønn]"
+                          name="Kjønn"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Kompetansenivå]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].ExternalColumns[Kompetansenivå]"
+                          length="255"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Kompetansenivå]"
+                          name="Kompetansenivå"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Sektor]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].ExternalColumns[Sektor]"
+                          length="255"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Sektor]"
+                          name="Sektor"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Verdi]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].ExternalColumns[Verdi]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Verdi]"
+                          name="Verdi"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Turnus]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].ExternalColumns[Turnus]"
+                          length="255"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Turnus]"
+                          name="Turnus"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].ExternalColumns[Kommunenummer]"
+                          dataType="wstr"
+                          length="255"
+                          name="Kommunenummer" />
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].ExternalColumns[Variabelnavn]"
+                          dataType="wstr"
+                          length="255"
+                          name="Variabelnavn" />
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].ExternalColumns[År]"
+                          dataType="r8"
+                          name="År" />
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].ExternalColumns[Kjønn]"
+                          dataType="wstr"
+                          length="255"
+                          name="Kjønn" />
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].ExternalColumns[Kompetansenivå]"
+                          dataType="wstr"
+                          length="255"
+                          name="Kompetansenivå" />
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].ExternalColumns[Sektor]"
+                          dataType="wstr"
+                          length="255"
+                          name="Sektor" />
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].ExternalColumns[Verdi]"
+                          dataType="r8"
+                          name="Verdi" />
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].ExternalColumns[Turnus]"
+                          dataType="wstr"
+                          length="255"
+                          name="Turnus" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Error Output]"
+                      isErrorOut="true"
+                      name="Excel Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Error Output].Columns[Kommunenummer]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Error Output].Columns[Kommunenummer]"
+                          name="Kommunenummer" />
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Error Output].Columns[Variabelnavn]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Error Output].Columns[Variabelnavn]"
+                          name="Variabelnavn" />
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Error Output].Columns[År]"
+                          dataType="r8"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Error Output].Columns[År]"
+                          name="År" />
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Error Output].Columns[Kjønn]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Error Output].Columns[Kjønn]"
+                          name="Kjønn" />
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Error Output].Columns[Kompetansenivå]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Error Output].Columns[Kompetansenivå]"
+                          name="Kompetansenivå" />
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Error Output].Columns[Turnus]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Error Output].Columns[Turnus]"
+                          name="Turnus" />
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Error Output].Columns[Sektor]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Error Output].Columns[Sektor]"
+                          name="Sektor" />
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Error Output].Columns[Verdi]"
+                          dataType="r8"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Error Output].Columns[Verdi]"
+                          name="Verdi" />
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Les alle filer\Les inn data fra Excel\Data Conversion"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Data Conversion"
+                  name="Data Conversion"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Inputs[Data Conversion Input]"
+                      name="Data Conversion Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Inputs[Data Conversion Input].Columns[Kommunenummer]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Kommunenummer"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Kommunenummer]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Inputs[Data Conversion Input].Columns[Variabelnavn]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Variabelnavn"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Variabelnavn]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Inputs[Data Conversion Input].Columns[År]"
+                          cachedDataType="r8"
+                          cachedName="År"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[År]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Inputs[Data Conversion Input].Columns[Kjønn]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Kjønn"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Kjønn]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Inputs[Data Conversion Input].Columns[Kompetansenivå]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Kompetansenivå"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Kompetansenivå]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Inputs[Data Conversion Input].Columns[Sektor]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Sektor"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Sektor]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Inputs[Data Conversion Input].Columns[Turnus]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Turnus"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Turnus]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output]"
+                      exclusionGroup="1"
+                      name="Data Conversion Output"
+                      synchronousInputId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kommunenummer]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kommunenummer]"
+                          name="Conv_Kommunenummer"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Kommunenummer]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Variabelnavn]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="150"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Variabelnavn]"
+                          name="Conv_Variabelnavn"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Variabelnavn]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_År]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_År]"
+                          name="Conv_År"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[År]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Sektor]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="100"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Sektor]"
+                          name="Conv_Sektor"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Sektor]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kjønn]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="100"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kjønn]"
+                          name="Conv_Kjønn"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Kjønn]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kompetansenivå]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="100"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kompetansenivå]"
+                          name="Conv_Kompetansenivå"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Kompetansenivå]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Turnus]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="100"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Turnus]"
+                          name="Conv_Turnus"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Turnus]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Data Conversion Error Output"
+                      synchronousInputId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Destinasjonstabell"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable">User::DestinationTable</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">4</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Connections[OleDbConnection]"
+                      connectionManagerID="{82249E95-58AD-4091-85C3-F51C7AB0D442}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[vk-sxd0e-002 Staging_PAI]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Inputs[OLE DB Destination Input].Columns[Verdi]"
+                          cachedDataType="r8"
+                          cachedName="Verdi"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Inputs[OLE DB Destination Input].ExternalColumns[Verdi]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Verdi]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Inputs[OLE DB Destination Input].Columns[Conv_Kommunenummer]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Conv_Kommunenummer"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Inputs[OLE DB Destination Input].ExternalColumns[Kommunenummer]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kommunenummer]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Inputs[OLE DB Destination Input].Columns[Conv_Variabelnavn]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="150"
+                          cachedName="Conv_Variabelnavn"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Inputs[OLE DB Destination Input].ExternalColumns[Variabelnavn]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Variabelnavn]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Inputs[OLE DB Destination Input].Columns[Conv_År]"
+                          cachedDataType="i4"
+                          cachedName="Conv_År"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Inputs[OLE DB Destination Input].ExternalColumns[År]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_År]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Inputs[OLE DB Destination Input].Columns[Conv_Sektor]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Conv_Sektor"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Inputs[OLE DB Destination Input].ExternalColumns[Sektor]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Sektor]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Inputs[OLE DB Destination Input].Columns[Conv_Kjønn]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Conv_Kjønn"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Inputs[OLE DB Destination Input].ExternalColumns[Kjønn]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kjønn]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Inputs[OLE DB Destination Input].Columns[Conv_Kompetansenivå]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Conv_Kompetansenivå"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Inputs[OLE DB Destination Input].ExternalColumns[Kompetansenivå]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kompetansenivå]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Inputs[OLE DB Destination Input].Columns[Conv_Turnus]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Conv_Turnus"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Inputs[OLE DB Destination Input].ExternalColumns[Turnus]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Turnus]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Inputs[OLE DB Destination Input].ExternalColumns[Kommunenummer]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Kommunenummer" />
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Inputs[OLE DB Destination Input].ExternalColumns[Variabelnavn]"
+                          codePage="1252"
+                          dataType="str"
+                          length="150"
+                          name="Variabelnavn" />
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Inputs[OLE DB Destination Input].ExternalColumns[År]"
+                          dataType="i4"
+                          name="År" />
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Inputs[OLE DB Destination Input].ExternalColumns[Sektor]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Sektor" />
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Inputs[OLE DB Destination Input].ExternalColumns[Kjønn]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Kjønn" />
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Inputs[OLE DB Destination Input].ExternalColumns[Kompetansenivå]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Kompetansenivå" />
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Inputs[OLE DB Destination Input].ExternalColumns[Verdi]"
+                          dataType="numeric"
+                          name="Verdi"
+                          precision="18"
+                          scale="5" />
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Inputs[OLE DB Destination Input].ExternalColumns[Turnus]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Turnus" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Les alle filer\Les inn data fra Excel\Fjern malrad"
+                  componentClassID="Microsoft.ConditionalSplit"
+                  contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+                  name="Fjern malrad"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Les alle filer\Les inn data fra Excel\Fjern malrad.Inputs[Conditional Split Input]"
+                      description="Input to the Conditional Split Transformation"
+                      name="Conditional Split Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Fjern malrad.Inputs[Conditional Split Input].Columns[Kommunenummer]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Kommunenummer"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Kommunenummer]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Les alle filer\Les inn data fra Excel\Fjern malrad.Outputs[Uten malrad]"
+                      description="Output 1 of the Conditional Split Transformation"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="Uten malrad"
+                      synchronousInputId="Package\Les alle filer\Les inn data fra Excel\Fjern malrad.Inputs[Conditional Split Input]"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                          name="Expression">![ISNULL](#{Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Kommunenummer]}) &amp;&amp; #{Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Kommunenummer]} != "Tekst"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the friendly version of the expression. This expression version uses column names."
+                          expressionType="Notify"
+                          name="FriendlyExpression">!ISNULL(Kommunenummer) &amp;&amp; Kommunenummer != "Tekst"</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                          name="EvaluationOrder">0</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Les alle filer\Les inn data fra Excel\Fjern malrad.Outputs[Conditional Split Default Output]"
+                      description="Default Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      name="Conditional Split Default Output"
+                      synchronousInputId="Package\Les alle filer\Les inn data fra Excel\Fjern malrad.Inputs[Conditional Split Input]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsDefaultOut">true</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Les alle filer\Les inn data fra Excel\Fjern malrad.Outputs[Conditional Split Error Output]"
+                      description="Error Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Conditional Split Error Output"
+                      synchronousInputId="Package\Les alle filer\Les inn data fra Excel\Fjern malrad.Inputs[Conditional Split Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Fjern malrad.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Fjern malrad.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Fjern malrad.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Fjern malrad.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Les alle filer\Les inn data fra Excel\Lookup"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="Lookup"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">Select * From [KS_PAI04 Ansatte]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from 
+(Select * From [KS_PAI04 Ansatte]) [refTable] 
+where [refTable].[Kommunenummer] = ? 
+and [refTable].[Variabelnavn] = ? 
+and [refTable].[År] = ? and [refTable].[Sektor] = ? and [refTable].[Kjønn] = ? and [refTable].[Kompetansenivå] = ? and [refTable].[Turnus] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Kommunenummer" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Variabelnavn" dataType="DT_STR" length="150" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="År" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Sektor" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Kjønn" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Kompetansenivå" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Turnus" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Verdi" dataType="DT_NUMERIC" length="0" precision="18" scale="5" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kommunenummer]};#{Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Variabelnavn]};#{Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_År]};#{Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Sektor]};#{Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kjønn]};#{Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kompetansenivå]};#{Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Turnus]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Les alle filer\Les inn data fra Excel\Lookup.Connections[OleDbConnection]"
+                      connectionManagerID="{82249E95-58AD-4091-85C3-F51C7AB0D442}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[vk-sxd0e-002 Staging_PAI]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Les alle filer\Les inn data fra Excel\Lookup.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Lookup.Inputs[Lookup Input].Columns[Conv_Kommunenummer]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Conv_Kommunenummer"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kommunenummer]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">Kommunenummer</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Lookup.Inputs[Lookup Input].Columns[Conv_Variabelnavn]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="150"
+                          cachedName="Conv_Variabelnavn"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Variabelnavn]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">Variabelnavn</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Lookup.Inputs[Lookup Input].Columns[Conv_År]"
+                          cachedDataType="i4"
+                          cachedName="Conv_År"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_År]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">År</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Lookup.Inputs[Lookup Input].Columns[Conv_Sektor]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Conv_Sektor"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Sektor]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">Sektor</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Lookup.Inputs[Lookup Input].Columns[Conv_Kjønn]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Conv_Kjønn"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kjønn]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">Kjønn</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Lookup.Inputs[Lookup Input].Columns[Conv_Kompetansenivå]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Conv_Kompetansenivå"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kompetansenivå]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">Kompetansenivå</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Lookup.Inputs[Lookup Input].Columns[Conv_Turnus]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Conv_Turnus"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Turnus]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">Turnus</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\Les alle filer\Les inn data fra Excel\Lookup.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Kommunenummer]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Copy Column"
+                          length="50"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Kommunenummer]"
+                          name="LkUp_Kommunenummer"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">Kommunenummer</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Variabelnavn]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Copy Column"
+                          length="150"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Variabelnavn]"
+                          name="LkUp_Variabelnavn"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">Variabelnavn</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_År]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_År]"
+                          name="LkUp_År"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">År</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Sektor]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Copy Column"
+                          length="100"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Sektor]"
+                          name="LkUp_Sektor"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">Sektor</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Kjønn]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Copy Column"
+                          length="100"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Kjønn]"
+                          name="LkUp_Kjønn"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">Kjønn</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Kompetansenivå]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Copy Column"
+                          length="100"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Kompetansenivå]"
+                          name="LkUp_Kompetansenivå"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">Kompetansenivå</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Turnus]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Copy Column"
+                          length="100"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Turnus]"
+                          name="LkUp_Turnus"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">Turnus</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Verdi]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Verdi]"
+                          name="LkUp_Verdi"
+                          precision="18"
+                          scale="5"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">Verdi</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\Les alle filer\Les inn data fra Excel\Lookup.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\Les alle filer\Les inn data fra Excel\Lookup.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier"
+                  componentClassID="Microsoft.OLEDBCommand"
+                  contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+                  name="Oppdater nye verdier"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">Update [dbo].[KS_PAI04 Ansatte] Set Kommunenummer = ?,
+            Variabelnavn = ?,
+            År = ?, Sektor = ?, Kjønn = ?, Kompetansenivå = ?, Turnus = ?,
+ Verdi = ?
+ Where Kommunenummer = ?
+AND Variabelnavn = ?
+AND År = ? AND Sektor = ? AND Kjønn = ? AND Kompetansenivå = ? AND Turnus = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Connections[OleDbConnection]"
+                      connectionManagerID="{82249E95-58AD-4091-85C3-F51C7AB0D442}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[vk-sxd0e-002 Staging_PAI]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input]"
+                      errorOrTruncationOperation="Command Execution"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Command Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].Columns[Conv_Kommunenummer]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Conv_Kommunenummer"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kommunenummer]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].Columns[Conv_Variabelnavn]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="150"
+                          cachedName="Conv_Variabelnavn"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Variabelnavn]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].Columns[Conv_År]"
+                          cachedDataType="i4"
+                          cachedName="Conv_År"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_År]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].Columns[Conv_Sektor]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Conv_Sektor"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Sektor]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].Columns[Conv_Kjønn]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Conv_Kjønn"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kjønn]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].Columns[Conv_Kompetansenivå]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Conv_Kompetansenivå"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kompetansenivå]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].Columns[Conv_Turnus]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Conv_Turnus"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Turnus]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].Columns[Verdi]"
+                          cachedDataType="r8"
+                          cachedName="Verdi"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Verdi]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].Columns[LkUp_Kommunenummer]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="LkUp_Kommunenummer"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Kommunenummer]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].Columns[LkUp_Variabelnavn]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="150"
+                          cachedName="LkUp_Variabelnavn"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Variabelnavn]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].Columns[LkUp_År]"
+                          cachedDataType="i4"
+                          cachedName="LkUp_År"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_10]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_År]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].Columns[LkUp_Sektor]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="LkUp_Sektor"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_11]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Sektor]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].Columns[LkUp_Kjønn]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="LkUp_Kjønn"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_12]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Kjønn]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].Columns[LkUp_Verdi]"
+                          cachedDataType="numeric"
+                          cachedName="LkUp_Verdi"
+                          cachedPrecision="18"
+                          cachedScale="5"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_14]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Verdi]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].Columns[LkUp_Kompetansenivå]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="LkUp_Kompetansenivå"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_13]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Kompetansenivå]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Param_0">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="150"
+                          name="Param_1">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                          dataType="i4"
+                          name="Param_2">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Param_3">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Param_4">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Param_5">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Param_6">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                          dataType="numeric"
+                          name="Param_7"
+                          precision="18"
+                          scale="5">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Param_8">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
+                          codePage="1252"
+                          dataType="str"
+                          length="150"
+                          name="Param_9">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_10]"
+                          dataType="i4"
+                          name="Param_10">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_11]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Param_11">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_12]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Param_12">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_13]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Param_13">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_14]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Param_14">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Outputs[OLE DB Command Output]"
+                      exclusionGroup="1"
+                      name="OLE DB Command Output"
+                      synchronousInputId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Outputs[OLE DB Command Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Command Error Output"
+                      synchronousInputId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning"
+                  componentClassID="Microsoft.OLEDBCommand"
+                  contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+                  name="Oppdater nye verdier uten sammenligning"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">Update [dbo].[KS_PAI04 Ansatte] Set Kommunenummer = ?,
+            Variabelnavn = ?,
+            År = ?, Sektor = ?, Kjønn = ?, Kompetansenivå = ?, Turnus = ?,
+ Verdi = ?
+ Where Kommunenummer = ?
+AND Variabelnavn = ?
+AND År = ? AND Sektor = ? AND Kjønn = ? AND Kompetansenivå = ? AND Turnus = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Connections[OleDbConnection]"
+                      connectionManagerID="{82249E95-58AD-4091-85C3-F51C7AB0D442}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[vk-sxd0e-002 Staging_PAI]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input]"
+                      errorOrTruncationOperation="Command Execution"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Command Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].Columns[Conv_Kommunenummer]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Conv_Kommunenummer"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kommunenummer]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].Columns[Conv_Variabelnavn]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="150"
+                          cachedName="Conv_Variabelnavn"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Variabelnavn]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].Columns[Conv_År]"
+                          cachedDataType="i4"
+                          cachedName="Conv_År"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_År]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].Columns[Conv_Sektor]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Conv_Sektor"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Sektor]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].Columns[Conv_Kjønn]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Conv_Kjønn"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kjønn]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].Columns[Conv_Kompetansenivå]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Conv_Kompetansenivå"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kompetansenivå]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].Columns[Conv_Turnus]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Conv_Turnus"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Turnus]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].Columns[Verdi]"
+                          cachedDataType="r8"
+                          cachedName="Verdi"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Verdi]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].Columns[LkUp_Kommunenummer]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="LkUp_Kommunenummer"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Kommunenummer]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].Columns[LkUp_Variabelnavn]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="150"
+                          cachedName="LkUp_Variabelnavn"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Variabelnavn]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].Columns[LkUp_År]"
+                          cachedDataType="i4"
+                          cachedName="LkUp_År"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].ExternalColumns[Param_10]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_År]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].Columns[LkUp_Sektor]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="LkUp_Sektor"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].ExternalColumns[Param_11]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Sektor]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].Columns[LkUp_Kjønn]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="LkUp_Kjønn"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].ExternalColumns[Param_12]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Kjønn]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].Columns[LkUp_Kompetansenivå]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="LkUp_Kompetansenivå"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].ExternalColumns[Param_13]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Kompetansenivå]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].Columns[LkUp_Turnus]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="LkUp_Turnus"
+                          externalMetadataColumnId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].ExternalColumns[Param_14]"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Turnus]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Param_0">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          codePage="1252"
+                          dataType="str"
+                          length="150"
+                          name="Param_1">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                          dataType="i4"
+                          name="Param_2">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Param_3">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Param_4">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Param_5">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Param_6">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                          dataType="numeric"
+                          name="Param_7"
+                          precision="18"
+                          scale="5">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Param_8">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
+                          codePage="1252"
+                          dataType="str"
+                          length="150"
+                          name="Param_9">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].ExternalColumns[Param_10]"
+                          dataType="i4"
+                          name="Param_10">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].ExternalColumns[Param_11]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Param_11">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].ExternalColumns[Param_12]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Param_12">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].ExternalColumns[Param_13]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Param_13">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].ExternalColumns[Param_14]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Param_14">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Outputs[OLE DB Command Output]"
+                      exclusionGroup="1"
+                      name="OLE DB Command Output"
+                      synchronousInputId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Outputs[OLE DB Command Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Command Error Output"
+                      synchronousInputId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Les alle filer\Les inn data fra Excel\Sammenlign verdier"
+                  componentClassID="Microsoft.ConditionalSplit"
+                  contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+                  name="Sammenlign verdier"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Les alle filer\Les inn data fra Excel\Sammenlign verdier.Inputs[Conditional Split Input]"
+                      description="Input to the Conditional Split Transformation"
+                      name="Conditional Split Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Sammenlign verdier.Inputs[Conditional Split Input].Columns[Verdi]"
+                          cachedDataType="r8"
+                          cachedName="Verdi"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Verdi]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Sammenlign verdier.Inputs[Conditional Split Input].Columns[Conv_Kommunenummer]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Conv_Kommunenummer"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kommunenummer]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Sammenlign verdier.Inputs[Conditional Split Input].Columns[Conv_År]"
+                          cachedDataType="i4"
+                          cachedName="Conv_År"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_År]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Sammenlign verdier.Inputs[Conditional Split Input].Columns[Conv_Kjønn]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Conv_Kjønn"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kjønn]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Sammenlign verdier.Inputs[Conditional Split Input].Columns[Conv_Kompetansenivå]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Conv_Kompetansenivå"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kompetansenivå]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Sammenlign verdier.Inputs[Conditional Split Input].Columns[Conv_Sektor]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Conv_Sektor"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Sektor]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Sammenlign verdier.Inputs[Conditional Split Input].Columns[LkUp_Kommunenummer]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="LkUp_Kommunenummer"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Kommunenummer]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Sammenlign verdier.Inputs[Conditional Split Input].Columns[LkUp_År]"
+                          cachedDataType="i4"
+                          cachedName="LkUp_År"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_År]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Sammenlign verdier.Inputs[Conditional Split Input].Columns[LkUp_Sektor]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="LkUp_Sektor"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Sektor]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Sammenlign verdier.Inputs[Conditional Split Input].Columns[LkUp_Kjønn]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="LkUp_Kjønn"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Kjønn]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Sammenlign verdier.Inputs[Conditional Split Input].Columns[LkUp_Kompetansenivå]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="LkUp_Kompetansenivå"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Kompetansenivå]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Sammenlign verdier.Inputs[Conditional Split Input].Columns[LkUp_Verdi]"
+                          cachedDataType="numeric"
+                          cachedName="LkUp_Verdi"
+                          cachedPrecision="18"
+                          cachedScale="5"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Verdi]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Sammenlign verdier.Inputs[Conditional Split Input].Columns[Conv_Turnus]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Conv_Turnus"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Turnus]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Sammenlign verdier.Inputs[Conditional Split Input].Columns[LkUp_Turnus]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="LkUp_Turnus"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Turnus]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Les alle filer\Les inn data fra Excel\Sammenlign verdier.Outputs[Oppdaterte rader]"
+                      description="Output 1 of the Conditional Split Transformation"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="Oppdaterte rader"
+                      synchronousInputId="Package\Les alle filer\Les inn data fra Excel\Sammenlign verdier.Inputs[Conditional Split Input]"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                          name="Expression">#{Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kommunenummer]} == #{Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Kommunenummer]} &amp;&amp; #{Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_År]} == #{Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_År]} &amp;&amp; #{Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kjønn]} == #{Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Kjønn]} &amp;&amp; #{Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Kompetansenivå]} == #{Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Kompetansenivå]} &amp;&amp; #{Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Sektor]} == #{Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Sektor]} &amp;&amp; #{Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output].Columns[Conv_Turnus]} == #{Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Turnus]} &amp;&amp; (DT_NUMERIC,18,1)#{Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Verdi]} != #{Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Verdi]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the friendly version of the expression. This expression version uses column names."
+                          expressionType="Notify"
+                          name="FriendlyExpression">Conv_Kommunenummer == LkUp_Kommunenummer &amp;&amp; [Conv_År] == [LkUp_År] &amp;&amp; [Conv_Kjønn] == [LkUp_Kjønn] &amp;&amp; [Conv_Kompetansenivå] == [LkUp_Kompetansenivå] &amp;&amp; Conv_Sektor == LkUp_Sektor &amp;&amp; Conv_Turnus == LkUp_Turnus &amp;&amp; (DT_NUMERIC,18,1)Verdi != LkUp_Verdi</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                          name="EvaluationOrder">0</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Les alle filer\Les inn data fra Excel\Sammenlign verdier.Outputs[Conditional Split Default Output]"
+                      description="Default Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      name="Conditional Split Default Output"
+                      synchronousInputId="Package\Les alle filer\Les inn data fra Excel\Sammenlign verdier.Inputs[Conditional Split Input]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsDefaultOut">true</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Les alle filer\Les inn data fra Excel\Sammenlign verdier.Outputs[Conditional Split Error Output]"
+                      description="Error Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Conditional Split Error Output"
+                      synchronousInputId="Package\Les alle filer\Les inn data fra Excel\Sammenlign verdier.Inputs[Conditional Split Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Sammenlign verdier.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Sammenlign verdier.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Sammenlign verdier.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Sammenlign verdier.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Les alle filer\Les inn data fra Excel\Sjekk etter null verdier"
+                  componentClassID="Microsoft.ConditionalSplit"
+                  contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+                  name="Sjekk etter null verdier"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Les alle filer\Les inn data fra Excel\Sjekk etter null verdier.Inputs[Conditional Split Input]"
+                      description="Input to the Conditional Split Transformation"
+                      name="Conditional Split Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Sjekk etter null verdier.Inputs[Conditional Split Input].Columns[Verdi]"
+                          cachedDataType="r8"
+                          cachedName="Verdi"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Verdi]" />
+                        <inputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Sjekk etter null verdier.Inputs[Conditional Split Input].Columns[LkUp_Verdi]"
+                          cachedDataType="numeric"
+                          cachedName="LkUp_Verdi"
+                          cachedPrecision="18"
+                          cachedScale="5"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Verdi]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Les alle filer\Les inn data fra Excel\Sjekk etter null verdier.Outputs[Ingen nullverdier]"
+                      description="Output 1 of the Conditional Split Transformation"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="Ingen nullverdier"
+                      synchronousInputId="Package\Les alle filer\Les inn data fra Excel\Sjekk etter null verdier.Inputs[Conditional Split Input]"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                          name="Expression">![ISNULL](#{Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output].Columns[Verdi]}) &amp;&amp; ![ISNULL](#{Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output].Columns[LkUp_Verdi]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the friendly version of the expression. This expression version uses column names."
+                          expressionType="Notify"
+                          name="FriendlyExpression">!ISNULL(Verdi) &amp;&amp; !ISNULL(LkUp_Verdi)</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                          name="EvaluationOrder">0</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Les alle filer\Les inn data fra Excel\Sjekk etter null verdier.Outputs[Nullverdier]"
+                      description="Default Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      name="Nullverdier"
+                      synchronousInputId="Package\Les alle filer\Les inn data fra Excel\Sjekk etter null verdier.Inputs[Conditional Split Input]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsDefaultOut">true</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Les alle filer\Les inn data fra Excel\Sjekk etter null verdier.Outputs[Conditional Split Error Output]"
+                      description="Error Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Conditional Split Error Output"
+                      synchronousInputId="Package\Les alle filer\Les inn data fra Excel\Sjekk etter null verdier.Inputs[Conditional Split Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Sjekk etter null verdier.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Sjekk etter null verdier.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Les alle filer\Les inn data fra Excel\Sjekk etter null verdier.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Les alle filer\Les inn data fra Excel\Sjekk etter null verdier.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Les alle filer\Les inn data fra Excel.Paths[Data Conversion Output]"
+                  endId="Package\Les alle filer\Les inn data fra Excel\Fjern malrad.Inputs[Conditional Split Input]"
+                  name="Data Conversion Output"
+                  startId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Outputs[Data Conversion Output]" />
+                <path
+                  refId="Package\Les alle filer\Les inn data fra Excel.Paths[Excel Source Output]"
+                  endId="Package\Les alle filer\Les inn data fra Excel\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Excel Source Output"
+                  startId="Package\Les alle filer\Les inn data fra Excel\Ansatte.Outputs[Excel Source Output]" />
+                <path
+                  refId="Package\Les alle filer\Les inn data fra Excel.Paths[Ingen nullverdier]"
+                  endId="Package\Les alle filer\Les inn data fra Excel\Sammenlign verdier.Inputs[Conditional Split Input]"
+                  name="Ingen nullverdier"
+                  startId="Package\Les alle filer\Les inn data fra Excel\Sjekk etter null verdier.Outputs[Ingen nullverdier]" />
+                <path
+                  refId="Package\Les alle filer\Les inn data fra Excel.Paths[Lookup Match Output]"
+                  endId="Package\Les alle filer\Les inn data fra Excel\Sjekk etter null verdier.Inputs[Conditional Split Input]"
+                  name="Lookup Match Output"
+                  startId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\Les alle filer\Les inn data fra Excel.Paths[Lookup No Match Output]"
+                  endId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Inputs[OLE DB Destination Input]"
+                  name="Lookup No Match Output"
+                  startId="Package\Les alle filer\Les inn data fra Excel\Lookup.Outputs[Lookup No Match Output]" />
+                <path
+                  refId="Package\Les alle filer\Les inn data fra Excel.Paths[Nullverdier]"
+                  endId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input]"
+                  name="Nullverdier"
+                  startId="Package\Les alle filer\Les inn data fra Excel\Sjekk etter null verdier.Outputs[Nullverdier]" />
+                <path
+                  refId="Package\Les alle filer\Les inn data fra Excel.Paths[Oppdaterte rader]"
+                  endId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input]"
+                  name="Oppdaterte rader"
+                  startId="Package\Les alle filer\Les inn data fra Excel\Sammenlign verdier.Outputs[Oppdaterte rader]" />
+                <path
+                  refId="Package\Les alle filer\Les inn data fra Excel.Paths[Uten malrad]"
+                  endId="Package\Les alle filer\Les inn data fra Excel\Lookup.Inputs[Lookup Input]"
+                  name="Uten malrad"
+                  startId="Package\Les alle filer\Les inn data fra Excel\Fjern malrad.Outputs[Uten malrad]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{5D1408CB-47D7-4E5F-8C0F-AD39C951CA11}"
+          DTS:ObjectName="{5D1408CB-47D7-4E5F-8C0F-AD39C951CA11}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::ExcelFile" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Les alle filer\Les inn data fra Excel"
+          TopLeft="39.3333292106788,24.1333311017355" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="239,132"
+          Size="239,175"
+          Id="Package\Les alle filer"
+          TopLeft="237.083329800516,58.0666656283538" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Les alle filer\Les inn data fra Excel">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="180,43"
+          Id="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier"
+          TopLeft="90.4166653193534,394.733329040607" />
+        <NodeLayout
+          Size="187,43"
+          Id="Package\Les alle filer\Les inn data fra Excel\Sjekk etter null verdier"
+          TopLeft="340.833328254521,315.466661025683" />
+        <NodeLayout
+          Size="157,43"
+          Id="Package\Les alle filer\Les inn data fra Excel\Data Conversion"
+          TopLeft="355.833328031004,31.1999994421005" />
+        <NodeLayout
+          Size="173,43"
+          Id="Package\Les alle filer\Les inn data fra Excel\Sammenlign verdier"
+          TopLeft="92.4999986216426,313.266663830678" />
+        <NodeLayout
+          Size="164,43"
+          Id="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell"
+          TopLeft="82.9166654311121,179.833330117663" />
+        <NodeLayout
+          Size="139,43"
+          Id="Package\Les alle filer\Les inn data fra Excel\Fjern malrad"
+          TopLeft="363.749994579703,99.6666648844878" />
+        <NodeLayout
+          Size="179,51"
+          Id="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning"
+          TopLeft="344.999994859099,395.766660769979" />
+        <NodeLayout
+          Size="114,42"
+          Id="Package\Les alle filer\Les inn data fra Excel\Ansatte"
+          TopLeft="149.833330862224,24.4333328606686" />
+        <EdgeLayout
+          Id="Package\Les alle filer\Les inn data fra Excel.Paths[Oppdaterte rader]"
+          TopLeft="179.791665303831,355.933330497345">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.7999985432623"
+              Start="0,0"
+              End="0,31.2999985432623">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.2999985432623" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-38.8612109375,9.84531177163115,77.722421875,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Les alle filer\Les inn data fra Excel.Paths[Nullverdier]"
+          TopLeft="434.41666155681,358.13332769235">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.6333330776293"
+              Start="0,0"
+              End="0,30.1333330776293">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.1333330776293" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-24.28369140625,10.1921548200646,48.5673828125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Les alle filer\Les inn data fra Excel.Paths[Ingen nullverdier]"
+          TopLeft="340.833328254521,335.699995761514">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-74.9999962995449,0"
+              Start="0,0"
+              End="-67.4999962995449,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-67.4999962995449,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-72.0352911185225,5,76.5705859375,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Les alle filer\Les inn data fra Excel.Paths[Excel Source Output]"
+          TopLeft="263.833330862224,49.0666661513846">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="91.99999716878,0"
+              Start="0,0"
+              End="84.49999716878,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="84.49999716878,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Les alle filer\Les inn data fra Excel.Paths[Data Conversion Output]"
+          TopLeft="433.791661305354,74.1999994421005">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25.4666654423873"
+              Start="0,0"
+              End="0,17.9666654423873">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.9666654423873" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="113,42"
+          Id="Package\Les alle filer\Les inn data fra Excel\Lookup"
+          TopLeft="364,187" />
+        <EdgeLayout
+          Id="Package\Les alle filer\Les inn data fra Excel.Paths[Uten malrad]"
+          TopLeft="433.249994579703,142.666664884488">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-12.749994579703,44.3333351155122"
+              Start="0,0"
+              End="-12.749994579703,36.8333351155122">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.1666675577561" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.1666675577561"
+                    Point2="0,22.1666675577561"
+                    Point3="-4,22.1666675577561" />
+                  <mssgle:LineSegment
+                    End="-8.74999457970301,22.1666675577561" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-8.74999457970301,22.1666675577561"
+                    Point2="-12.749994579703,22.1666675577561"
+                    Point3="-12.749994579703,26.1666675577561" />
+                  <mssgle:LineSegment
+                    End="-12.749994579703,36.8333351155122" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-33.8119308836015,27.1666675577561,54.8738671875,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Les alle filer\Les inn data fra Excel.Paths[Lookup No Match Output]"
+          TopLeft="364,204.666665058831">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-117.083334568888,0"
+              Start="0,0"
+              End="-109.583334568888,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-109.583334568888,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-110.598054003194,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Les alle filer\Les inn data fra Excel.Paths[Lookup Match Output]"
+          TopLeft="420.5,229">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="13.833328254521,86.466661025683"
+              Start="0,0"
+              End="13.833328254521,78.966661025683">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.2333305128415" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39.2333305128415"
+                    Point2="0,43.2333305128415"
+                    Point3="4,43.2333305128415" />
+                  <mssgle:LineSegment
+                    End="9.83332825452101,43.2333305128415" />
+                  <mssgle:CubicBezierSegment
+                    Point1="9.83332825452101,43.2333305128415"
+                    Point2="13.833328254521,43.2333305128415"
+                    Point3="13.833328254521,47.2333305128415" />
+                  <mssgle:LineSegment
+                    End="13.833328254521,78.966661025683" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-41.2747225914895,48.2333305128415,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Les alle filer\Les inn data fra Excel\Ansatte">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Les alle filer\Les inn data fra Excel\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[KS_PAI04 Ansatte]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

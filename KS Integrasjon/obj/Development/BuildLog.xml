@@ -2,13 +2,13 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>PAI Integrasjon</Name>
-    <LastWriteTime>2020-04-20T11:38:24.6908053Z</LastWriteTime>
+    <LastWriteTime>2020-09-25T07:37:43.9678081Z</LastWriteTime>
     <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>Deploy.dtsx</Name>
-      <LastWriteTime>2020-04-20T11:39:12.2502606Z</LastWriteTime>
+      <LastWriteTime>2020-09-23T15:36:05.7715072Z</LastWriteTime>
       <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -17,13 +17,33 @@
       <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
-      <Name>Manuelle data - TTU.dtsx</Name>
-      <LastWriteTime>2020-02-17T14:33:49.5224267Z</LastWriteTime>
+      <Name>Foreach mal.dtsx</Name>
+      <LastWriteTime>2020-05-11T14:35:24.8965797Z</LastWriteTime>
       <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
-      <Name>Årsverk.dtsx</Name>
-      <LastWriteTime>2020-03-18T12:23:26.1063803Z</LastWriteTime>
+      <Name>Filer - Årsverk.dtsx</Name>
+      <LastWriteTime>2020-09-25T08:36:29.0052332Z</LastWriteTime>
+      <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Filer - Stillingsstørrelse.dtsx</Name>
+      <LastWriteTime>2020-09-25T08:45:08.7061003Z</LastWriteTime>
+      <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Filer - Ansatte.dtsx</Name>
+      <LastWriteTime>2020-09-24T15:04:00.6018213Z</LastWriteTime>
+      <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Filer - Tabellgrupper.dtsx</Name>
+      <LastWriteTime>2020-09-24T15:16:27.5015889Z</LastWriteTime>
+      <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Filer - Turnover.dtsx</Name>
+      <LastWriteTime>2020-09-25T07:44:29.529132Z</LastWriteTime>
       <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

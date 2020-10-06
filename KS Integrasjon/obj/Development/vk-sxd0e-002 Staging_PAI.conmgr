@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:ObjectName="vk-sxd0e-002 Staging_PAI"
   DTS:DTSID="{82249E95-58AD-4091-85C3-F51C7AB0D442}"
