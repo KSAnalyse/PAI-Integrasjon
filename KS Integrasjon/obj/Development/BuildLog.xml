@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>PAI Integrasjon</Name>
-    <LastWriteTime>2020-10-07T13:07:07.7906348Z</LastWriteTime>
+    <LastWriteTime>2021-03-24T08:38:48.4794188Z</LastWriteTime>
     <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -49,6 +49,11 @@
     <ProjectBuildItemInfo>
       <Name>Filer - Heltidsandel.dtsx</Name>
       <LastWriteTime>2020-10-07T13:06:28.3714546Z</LastWriteTime>
+      <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Filer - Sykefravær.dtsx</Name>
+      <LastWriteTime>2021-03-24T09:16:35.2605545Z</LastWriteTime>
       <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
