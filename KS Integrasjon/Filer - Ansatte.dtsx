@@ -12,8 +12,8 @@
   DTS:ObjectName="Filer - Ansatte"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="110"
-  DTS:VersionGUID="{2C2D51FB-FF6D-4094-B366-2593F345BA69}">
+  DTS:VersionBuild="117"
+  DTS:VersionGUID="{374F77DC-DA61-4511-B3BB-EA418EBA717F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -144,6 +144,7 @@ AND År = ? AND Sektor = ? AND Kjønn = ? AND Kompetansenivå = ? AND Turnus = ?
     <DTS:Executable
       DTS:refId="Package\Les alle filer"
       DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:DelayValidation="True"
       DTS:Description="Foreach Loop Container"
       DTS:DTSID="{188CC2DB-6733-4289-8193-4C64B1FEC717}"
       DTS:ExecutableType="STOCK:FOREACHLOOP"
@@ -848,8 +849,7 @@ AND År = ? AND Sektor = ? AND Kjønn = ? AND Kompetansenivå = ? AND Turnus = ?
                           refId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Inputs[OLE DB Destination Input].ExternalColumns[Verdi]"
                           dataType="numeric"
                           name="Verdi"
-                          precision="18"
-                          scale="5" />
+                          precision="18" />
                         <externalMetadataColumn
                           refId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Inputs[OLE DB Destination Input].ExternalColumns[Turnus]"
                           codePage="1252"
@@ -1610,8 +1610,7 @@ AND År = ? AND Sektor = ? AND Kjønn = ? AND Kompetansenivå = ? AND Turnus = ?
                           refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
                           dataType="numeric"
                           name="Param_7"
-                          precision="18"
-                          scale="5">
+                          precision="18">
                           <properties>
                             <property
                               dataType="System.Int32"
@@ -1999,8 +1998,7 @@ AND År = ? AND Sektor = ? AND Kjønn = ? AND Kompetansenivå = ? AND Turnus = ?
                           refId="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
                           dataType="numeric"
                           name="Param_7"
-                          precision="18"
-                          scale="5">
+                          precision="18">
                           <properties>
                             <property
                               dataType="System.Int32"
@@ -2519,7 +2517,7 @@ AND År = ? AND Sektor = ? AND Kjønn = ? AND Kompetansenivå = ? AND Turnus = ?
         <NodeLayout
           Size="139.2,43.2"
           Id="Package\Les alle filer\Les inn data fra Excel\Fjern malrad"
-          TopLeft="363.749994579703,99.6666648844878" />
+          TopLeft="363.178565998543,99.0549001700257" />
         <NodeLayout
           Size="113.6,41.6"
           Id="Package\Les alle filer\Les inn data fra Excel\Ansatte"
@@ -2530,37 +2528,37 @@ AND År = ? AND Sektor = ? AND Kjønn = ? AND Kompetansenivå = ? AND Turnus = ?
           TopLeft="90.4166653193534,394.733329040607" />
         <EdgeLayout
           Id="Package\Les alle filer\Les inn data fra Excel.Paths[Uten malrad]"
-          TopLeft="433.249994579703,142.666664884488">
+          TopLeft="432.778565998543,142.254900170026">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-12.749994579703,44.3333351155122"
+              EndConnector="-12.3785659985431,44.7450998299743"
               Start="0,0"
-              End="-12.749994579703,36.8333351155122">
+              End="-12.3785659985431,37.2450998299743">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.1666675577561" />
+                    End="0,18.3725499149872" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,18.1666675577561"
-                    Point2="0,22.1666675577561"
-                    Point3="-4,22.1666675577561" />
+                    Point1="0,18.3725499149872"
+                    Point2="0,22.3725499149872"
+                    Point3="-4,22.3725499149872" />
                   <mssgle:LineSegment
-                    End="-8.74999457970301,22.1666675577561" />
+                    End="-8.37856599854308,22.3725499149872" />
                   <mssgle:CubicBezierSegment
-                    Point1="-8.74999457970301,22.1666675577561"
-                    Point2="-12.749994579703,22.1666675577561"
-                    Point3="-12.749994579703,26.1666675577561" />
+                    Point1="-8.37856599854308,22.3725499149872"
+                    Point2="-12.3785659985431,22.3725499149872"
+                    Point3="-12.3785659985431,26.3725499149872" />
                   <mssgle:LineSegment
-                    End="-12.749994579703,36.8333351155122" />
+                    End="-12.3785659985431,37.2450998299743" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-33.8119308836015,27.1666675577561,54.8738671875,9.7490234375"
+              BoundingBox="-33.6262165930215,27.3725499149872,54.8738671875,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2720,18 +2718,18 @@ AND År = ? AND Sektor = ? AND Kjønn = ? AND Kompetansenivå = ? AND Turnus = ?
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Les alle filer\Les inn data fra Excel.Paths[Data Conversion Output]"
-          TopLeft="433.791661305354,74.1999994421005">
+          TopLeft="433.505947014774,74.3999994421005">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,25.4666654423873"
+              EndConnector="0,24.6549007279252"
               Start="0,0"
-              End="0,17.9666654423873">
+              End="0,17.1549007279252">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17.9666654423873" />
+                    End="0,17.1549007279252" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2754,7 +2752,7 @@ AND År = ? AND Sektor = ? AND Kjønn = ? AND Kompetansenivå = ? AND Turnus = ?
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[dbo].[KS_PAI04 Ansatte]</Value>
+          type="q3:string">[KS_PAI04 Ansatte]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>

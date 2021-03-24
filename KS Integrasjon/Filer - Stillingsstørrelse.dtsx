@@ -12,8 +12,8 @@
   DTS:ObjectName="Filer - Stillingsstørrelse"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="83"
-  DTS:VersionGUID="{5FC113D3-79BB-413A-AED7-73E5D3901B95}">
+  DTS:VersionBuild="87"
+  DTS:VersionGUID="{45326B56-1995-46E5-94FB-853ED06A6EB8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -607,7 +607,7 @@ AND År = ? AND Sektor = ? AND Kjønn = ? AND Kompetansenivå = ? AND Turnus = ?
                           dataType="numeric"
                           name="Verdi"
                           precision="18"
-                          scale="5" />
+                          scale="1" />
                         <externalMetadataColumn
                           refId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Inputs[OLE DB Destination Input].ExternalColumns[Turnus]"
                           codePage="1252"
@@ -989,7 +989,7 @@ AND År = ? AND Sektor = ? AND Kjønn = ? AND Kompetansenivå = ? AND Turnus = ?
                           dataType="numeric"
                           name="Param_7"
                           precision="18"
-                          scale="5">
+                          scale="1">
                           <properties>
                             <property
                               dataType="System.Int32"
@@ -1378,7 +1378,7 @@ AND År = ? AND Sektor = ? AND Kjønn = ? AND Kompetansenivå = ? AND Turnus = ?
                           dataType="numeric"
                           name="Param_7"
                           precision="18"
-                          scale="5">
+                          scale="1">
                           <properties>
                             <property
                               dataType="System.Int32"
@@ -2493,6 +2493,30 @@ and [refTable].[År] = ? and [refTable].[Sektor] = ? and [refTable].[Kjønn] = ?
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\Les alle filer\Les inn data fra Excel\Stillingsstørrelse"
+          TopLeft="165.833330862224,26.4333328606686" />
+        <NodeLayout
+          Size="156.8,43.2"
+          Id="Package\Les alle filer\Les inn data fra Excel\Data Conversion"
+          TopLeft="355.833328031004,31.1999994421005" />
+        <NodeLayout
+          Size="187.2,43.2"
+          Id="Package\Les alle filer\Les inn data fra Excel\Sjekk etter null verdier"
+          TopLeft="340.833328254521,315.466661025683" />
+        <NodeLayout
+          Size="203.2,43.2"
+          Id="Package\Les alle filer\Les inn data fra Excel\Sjekk tabellen i databasen"
+          TopLeft="338.333328291774,179.399996792078" />
+        <NodeLayout
+          Size="180,43.2"
+          Id="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier"
+          TopLeft="90.4166653193534,394.733329040607" />
+        <NodeLayout
+          Size="172.8,43.2"
+          Id="Package\Les alle filer\Les inn data fra Excel\Sammenlign verdier"
+          TopLeft="92.4999986216426,313.266663830678" />
+        <NodeLayout
           Size="164,43.2"
           Id="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell"
           TopLeft="82.9166654311121,179.833330117663" />
@@ -2501,33 +2525,9 @@ and [refTable].[År] = ? and [refTable].[Sektor] = ? and [refTable].[Kjønn] = ?
           Id="Package\Les alle filer\Les inn data fra Excel\Fjern malrad"
           TopLeft="363.749994579703,99.6666648844878" />
         <NodeLayout
-          Size="203.2,43.2"
-          Id="Package\Les alle filer\Les inn data fra Excel\Sjekk tabellen i databasen"
-          TopLeft="338.333328291774,179.399996792078" />
-        <NodeLayout
-          Size="187.2,43.2"
-          Id="Package\Les alle filer\Les inn data fra Excel\Sjekk etter null verdier"
-          TopLeft="340.833328254521,315.466661025683" />
-        <NodeLayout
-          Size="180,43.2"
-          Id="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier"
-          TopLeft="90.4166653193534,394.733329040607" />
-        <NodeLayout
-          Size="155.2,41.6"
-          Id="Package\Les alle filer\Les inn data fra Excel\Stillingsstørrelse"
-          TopLeft="165.833330862224,26.4333328606686" />
-        <NodeLayout
           Size="179.2,51.2"
           Id="Package\Les alle filer\Les inn data fra Excel\Oppdater nye verdier uten sammenligning"
           TopLeft="344.999994859099,395.766660769979" />
-        <NodeLayout
-          Size="172.8,43.2"
-          Id="Package\Les alle filer\Les inn data fra Excel\Sammenlign verdier"
-          TopLeft="92.4999986216426,313.266663830678" />
-        <NodeLayout
-          Size="156.8,43.2"
-          Id="Package\Les alle filer\Les inn data fra Excel\Data Conversion"
-          TopLeft="355.833328031004,31.1999994421005" />
         <EdgeLayout
           Id="Package\Les alle filer\Les inn data fra Excel.Paths[Uten malrad]"
           TopLeft="436.541661435738,142.333331551155">
@@ -2720,37 +2720,6 @@ and [refTable].[År] = ? and [refTable].[Sektor] = ? and [refTable].[Kjønn] = ?
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Les alle filer\Les inn data fra Excel\Sjekk tabellen i databasen">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">true</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[KS_PAI02 Stillingsstørrelse]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Les alle filer\Les inn data fra Excel\Stillingsstørrelse">
     <Properties>
       <Property>
@@ -2760,6 +2729,37 @@ and [refTable].[År] = ? and [refTable].[Sektor] = ? and [refTable].[Kjønn] = ?
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Les alle filer\Les inn data fra Excel\Sjekk tabellen i databasen">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">true</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[KS_PAI02 Stillingsstørrelse]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

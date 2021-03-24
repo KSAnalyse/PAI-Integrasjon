@@ -2,48 +2,53 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>PAI Integrasjon</Name>
-    <LastWriteTime>2020-09-25T07:37:43.9678081Z</LastWriteTime>
+    <LastWriteTime>2020-10-07T13:07:07.7906348Z</LastWriteTime>
     <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>Deploy.dtsx</Name>
-      <LastWriteTime>2020-09-23T15:36:05.7715072Z</LastWriteTime>
+      <LastWriteTime>2021-03-23T14:37:25.9063999Z</LastWriteTime>
       <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>SSB Regioner.dtsx</Name>
-      <LastWriteTime>2019-10-25T13:03:36.1431385Z</LastWriteTime>
+      <LastWriteTime>2020-10-07T07:05:53.9176467Z</LastWriteTime>
       <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Foreach mal.dtsx</Name>
-      <LastWriteTime>2020-05-11T14:35:24.8965797Z</LastWriteTime>
+      <LastWriteTime>2020-10-07T07:05:58.9915608Z</LastWriteTime>
       <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Filer - Årsverk.dtsx</Name>
-      <LastWriteTime>2020-09-25T08:36:29.0052332Z</LastWriteTime>
+      <LastWriteTime>2020-10-07T07:05:58.9915608Z</LastWriteTime>
       <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Filer - Stillingsstørrelse.dtsx</Name>
-      <LastWriteTime>2020-09-25T08:45:08.7061003Z</LastWriteTime>
+      <LastWriteTime>2020-10-07T11:37:27.7264873Z</LastWriteTime>
       <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Filer - Ansatte.dtsx</Name>
-      <LastWriteTime>2020-09-24T15:04:00.6018213Z</LastWriteTime>
+      <LastWriteTime>2021-03-23T09:06:36.5288589Z</LastWriteTime>
       <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Filer - Tabellgrupper.dtsx</Name>
-      <LastWriteTime>2020-09-24T15:16:27.5015889Z</LastWriteTime>
+      <LastWriteTime>2020-10-07T07:05:58.9895664Z</LastWriteTime>
       <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Filer - Turnover.dtsx</Name>
-      <LastWriteTime>2020-09-25T07:44:29.529132Z</LastWriteTime>
+      <LastWriteTime>2020-11-13T14:42:32.8961151Z</LastWriteTime>
+      <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Filer - Heltidsandel.dtsx</Name>
+      <LastWriteTime>2020-10-07T13:06:28.3714546Z</LastWriteTime>
       <LastKnownProtectionLevel>DontSaveSensitive</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

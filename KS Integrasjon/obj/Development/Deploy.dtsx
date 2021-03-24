@@ -7,27 +7,15 @@
   DTS:CreatorName="KSINT\axel.hjelmervik.hansen"
   DTS:DTSID="{CFAEFF75-3BEC-43D2-872D-DA2491A9FB89}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.93"
+  DTS:LastModifiedProductVersion="15.0.2000.121"
   DTS:LocaleID="1044"
   DTS:ObjectName="Deploy"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="29"
-  DTS:VersionGUID="{EE3A1BCE-A1F4-4C26-AA53-2522CFE74538}">
+  DTS:VersionBuild="33"
+  DTS:VersionGUID="{C9D22A73-AFF1-4050-B345-A66EA1D55B83}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[VK-SXD0E-002]"
-      DTS:CreationName="MSOLAP100"
-      DTS:DTSID="{9918AADF-5628-4D6A-9D02-041A2F8C3370}"
-      DTS:ObjectName="VK-SXD0E-002">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=vk-sxd0e-002;User ID=I04\vk300;Initial Catalog=PAI data;Provider=MSOLAP.8;Persist Security Info=False;Impersonation Level=Impersonate;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
@@ -42,7 +30,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <ASProcessingData
-          ConnectionName="VK-SXD0E-002"
+          ConnectionName="Kube"
           ProcessingCommands="{&#xA;  &quot;sequence&quot;: {&#xA;    &quot;operations&quot;: [&#xA;      {&#xA;        &quot;refresh&quot;: {&#xA;          &quot;type&quot;: &quot;full&quot;,&#xA;          &quot;objects&quot;: [&#xA;            {&#xA;              &quot;database&quot;: &quot;PAI data&quot;&#xA;            }&#xA;          ]&#xA;        }&#xA;      }&#xA;    ]&#xA;  }&#xA;}" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -60,15 +48,11 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="237,43"
+          Size="236.8,43.2"
           Id="Package\Analysis Services Processing Task"
-          TopLeft="76.7708321893588,65.9749988202751" />
+          TopLeft="77.9136893516787,65.9749988202751" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
-  <ConnectionManager
-    design-time-name="Package.ConnectionManagers[VK-SXD0E-002]">
-    <ProjectReferenceName></ProjectReferenceName>
-  </ConnectionManager>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

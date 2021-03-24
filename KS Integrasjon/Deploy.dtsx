@@ -12,8 +12,8 @@
   DTS:ObjectName="Deploy"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="30"
-  DTS:VersionGUID="{5AD26CE9-660C-4276-A586-5E1B30177BE5}">
+  DTS:VersionBuild="33"
+  DTS:VersionGUID="{C9D22A73-AFF1-4050-B345-A66EA1D55B83}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -30,7 +30,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <ASProcessingData
-          ConnectionName="PAI data"
+          ConnectionName="Kube"
           ProcessingCommands="{&#xA;  &quot;sequence&quot;: {&#xA;    &quot;operations&quot;: [&#xA;      {&#xA;        &quot;refresh&quot;: {&#xA;          &quot;type&quot;: &quot;full&quot;,&#xA;          &quot;objects&quot;: [&#xA;            {&#xA;              &quot;database&quot;: &quot;PAI data&quot;&#xA;            }&#xA;          ]&#xA;        }&#xA;      }&#xA;    ]&#xA;  }&#xA;}" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -50,7 +50,7 @@
         <NodeLayout
           Size="236.8,43.2"
           Id="Package\Analysis Services Processing Task"
-          TopLeft="76.7708321893588,65.9749988202751" />
+          TopLeft="77.9136893516787,65.9749988202751" />
       </GraphLayout>
     </LayoutInfo>
   </Package>

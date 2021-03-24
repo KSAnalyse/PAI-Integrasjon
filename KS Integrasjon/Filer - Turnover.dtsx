@@ -12,8 +12,8 @@
   DTS:ObjectName="Filer - Turnover"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
-  DTS:VersionBuild="111"
-  DTS:VersionGUID="{FFC80A7D-9B2A-4042-85C6-9563DA90F707}">
+  DTS:VersionBuild="112"
+  DTS:VersionGUID="{D89FFE60-F768-4C71-B31D-62BAE1D15FAE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -607,7 +607,7 @@ AND År = ? AND Sektor = ? AND Kjønn = ? AND Kompetansenivå = ? AND Turnus = ?
                           dataType="numeric"
                           name="Verdi"
                           precision="18"
-                          scale="5" />
+                          scale="1" />
                         <externalMetadataColumn
                           refId="Package\Les alle filer\Les inn data fra Excel\Destinasjonstabell.Inputs[OLE DB Destination Input].ExternalColumns[Turnus]"
                           codePage="1252"
@@ -1369,7 +1369,7 @@ AND År = ? AND Sektor = ? AND Kjønn = ? AND Kompetansenivå = ? AND Turnus = ?
                           dataType="numeric"
                           name="Param_7"
                           precision="18"
-                          scale="5">
+                          scale="1">
                           <properties>
                             <property
                               dataType="System.Int32"
@@ -1758,7 +1758,7 @@ AND År = ? AND Sektor = ? AND Kjønn = ? AND Kompetansenivå = ? AND Turnus = ?
                           dataType="numeric"
                           name="Param_7"
                           precision="18"
-                          scale="5">
+                          scale="1">
                           <properties>
                             <property
                               dataType="System.Int32"

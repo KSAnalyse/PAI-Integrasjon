@@ -1,39 +1,39 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="3/17/2020 10:32:51 AM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="UTLAAN17-X1G3"
   DTS:CreatorName="KSINT\8093AHA"
-  DTS:DTSID="{5E3609A7-FBA0-48AA-8E0B-9C7CE83E0C34}"
+  DTS:DTSID="{0550CF8C-F43D-4723-9410-72E7B796F590}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.2000.121"
   DTS:LocaleID="1044"
-  DTS:ObjectName="Filer - Turnover"
+  DTS:ObjectName="Filer - Heltidsandel"
   DTS:PackageType="5"
   DTS:ProtectionLevel="0"
   DTS:VersionBuild="112"
-  DTS:VersionGUID="{D89FFE60-F768-4C71-B31D-62BAE1D15FAE}">
+  DTS:VersionGUID="{5A08B7DA-8E20-408D-AE52-1D94209B18FB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[Mal]"
       DTS:CreationName="EXCEL"
-      DTS:DTSID="{277EC32F-AA88-41D8-85A2-5ACDE577FA24}"
+      DTS:DTSID="{9BE24BB3-51E0-4883-B28F-F5A6786E4029}"
       DTS:ObjectName="Mal">
       <DTS:PropertyExpression
         DTS:Name="ConnectionString">"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" +  @[User::ExcelFile] + ";Extended Properties=\"" + @[User::ExtProperties] + "\""</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=E:\Utvekslingsfiler\PAI\Turnover\Mal;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=E:\Utvekslingsfiler\PAI\Heltidsandel\Mal;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{ECDDEAF1-9563-407E-9C00-AAD107D19907}"
+      DTS:DTSID="{7D204EEA-36AE-47CC-AE18-C2326CFEDBFF}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="Arknavn">
@@ -42,36 +42,36 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{ED0E7D74-4AD5-4E3B-A72A-904A8ED8DA67}"
+      DTS:DTSID="{DCA7007C-53B5-4877-9913-A7967741E002}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="DatabaseTabellnavn">
       <DTS:VariableValue
-        DTS:DataType="8">KS_PAI05 Turnover</DTS:VariableValue>
+        DTS:DataType="8">KS_PAI03 Heltidsandel</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{142DA922-80BF-4D0B-BB7E-AC6E373C94D2}"
+      DTS:DTSID="{A37DA140-2E05-406D-A8F5-FED251BD218A}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="&quot;[dbo].[&quot; + @[User::DatabaseTabellnavn] + &quot;]&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="DestinationTable">
       <DTS:VariableValue
-        DTS:DataType="8">[dbo].[KS_PAI05 Turnover]</DTS:VariableValue>
+        DTS:DataType="8">[dbo].[KS_PAI03 Heltidsandel]</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{D4AB1A9C-12FA-443F-80E8-B7349E594659}"
+      DTS:DTSID="{BEF5A352-094E-482F-B3D9-B1E613FFD6FA}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="ExcelFile">
       <DTS:VariableValue
-        DTS:DataType="8">E:\Utvekslingsfiler\PAI\Turnover\Mal</DTS:VariableValue>
+        DTS:DataType="8">E:\Utvekslingsfiler\PAI\Heltidsandel\Mal</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{DE8A24FB-387E-453C-8662-B6351507A179}"
+      DTS:DTSID="{D064EC9D-E386-497B-A454-166D2156A305}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="ExtProperties">
@@ -80,7 +80,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{8751BF2E-929D-4751-BA56-5A797E471AF4}"
+      DTS:DTSID="{CAF7CB48-6624-4CE1-9FD8-91487044668D}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="ExtraDimensionSelect">
@@ -89,7 +89,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{B29CCC32-826F-4EBB-BBD9-4C624A611EDF}"
+      DTS:DTSID="{823B1965-3114-48EA-B5ED-ECF547A8E938}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="ExtraDimensionWhere">
@@ -98,7 +98,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{978D7A77-0104-425E-A801-A8B82767C474}"
+      DTS:DTSID="{2339340F-B2D5-4667-9978-019DA814F907}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="&quot;select * from &#xA;(&quot; +  @[User::SqlSpørring] +&quot;) [refTable] &#xA;where [refTable].[Kommunenummer] = ? &#xA;and [refTable].[Variabelnavn] = ? &#xA;and [refTable].[År] = ? and [refTable].[Sektor] = ? and [refTable].[Kjønn] = ? and [refTable].[Kompetansenivå] = ? and [refTable].[Turnus] = ?&quot;"
       DTS:IncludeInDebugDump="2345"
@@ -106,32 +106,32 @@
       DTS:ObjectName="SqlParamSpørring">
       <DTS:VariableValue
         DTS:DataType="8">select * from 
-(Select * From [KS_PAI05 Turnover]) [refTable] 
+(Select * From [KS_PAI03 Heltidsandel]) [refTable] 
 where [refTable].[Kommunenummer] = ? 
 and [refTable].[Variabelnavn] = ? 
 and [refTable].[År] = ? and [refTable].[Sektor] = ? and [refTable].[Kjønn] = ? and [refTable].[Kompetansenivå] = ? and [refTable].[Turnus] = ?</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{76DFED77-6DBE-4C4B-ABD7-870AF6766EFC}"
+      DTS:DTSID="{924846A2-39C5-4D43-B659-4F9173322BA2}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="&quot;Select * From [&quot; + @[User::DatabaseTabellnavn] + &quot;]&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="SqlSpørring">
       <DTS:VariableValue
-        DTS:DataType="8">Select * From [KS_PAI05 Turnover]</DTS:VariableValue>
+        DTS:DataType="8">Select * From [KS_PAI03 Heltidsandel]</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{7BB985ED-43D9-459E-A50E-62C8A178B521}"
+      DTS:DTSID="{048D1233-8E0C-4898-8272-FFCCA5F391B2}"
       DTS:EvaluateAsExpression="True"
       DTS:Expression="&quot;Update &quot; + (DT_WSTR,128)@[User::DestinationTable] + &quot; Set Kommunenummer = ?,&#xA;            Variabelnavn = ?,&#xA;            År = ?, &quot; + (DT_WSTR,128)@[User::ExtraDimensionSelect] + &quot;&#xA; Verdi = ?&#xA; Where Kommunenummer = ?&#xA;AND Variabelnavn = ?&#xA;AND År = ? &quot; + (DT_WSTR,128)@[User::ExtraDimensionWhere]"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="UpdateSpørring">
       <DTS:VariableValue
-        DTS:DataType="8">Update [dbo].[KS_PAI05 Turnover] Set Kommunenummer = ?,
+        DTS:DataType="8">Update [dbo].[KS_PAI03 Heltidsandel] Set Kommunenummer = ?,
             Variabelnavn = ?,
             År = ?, Sektor = ?, Kjønn = ?, Kompetansenivå = ?, Turnus = ?,
  Verdi = ?
@@ -145,18 +145,18 @@ AND År = ? AND Sektor = ? AND Kjønn = ? AND Kompetansenivå = ? AND Turnus = ?
       DTS:refId="Package\Les alle filer"
       DTS:CreationName="STOCK:FOREACHLOOP"
       DTS:Description="Foreach Loop Container"
-      DTS:DTSID="{8A422691-9D02-4CB3-A8A5-13575BA6E38F}"
+      DTS:DTSID="{A9B367A1-0DB1-47F7-8601-6D6EC16E2E7F}"
       DTS:ExecutableType="STOCK:FOREACHLOOP"
       DTS:LocaleID="-1"
       DTS:ObjectName="Les alle filer">
       <DTS:ForEachEnumerator
         DTS:CreationName="Microsoft.ForEachFileEnumerator"
-        DTS:DTSID="{4723B598-FDD2-4B8F-81E1-F9DD71A37908}"
-        DTS:ObjectName="{4723B598-FDD2-4B8F-81E1-F9DD71A37908}">
+        DTS:DTSID="{57012699-960E-4A79-864B-CB4057E42217}"
+        DTS:ObjectName="{57012699-960E-4A79-864B-CB4057E42217}">
         <DTS:ObjectData>
           <ForEachFileEnumeratorProperties>
             <FEFEProperty
-              Folder="E:\Utvekslingsfiler\PAI\Turnover" />
+              Folder="E:\Utvekslingsfiler\PAI\Heltidsandel" />
             <FEFEProperty
               FileSpec="*.xlsx*" />
             <FEFEProperty
@@ -172,7 +172,7 @@ AND År = ? AND Sektor = ? AND Kjønn = ? AND Kompetansenivå = ? AND Turnus = ?
           DTS:refId="Package\Les alle filer\Les inn data fra Excel"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
-          DTS:DTSID="{48B4554D-C1E7-4B29-B690-A4F2E31AA68D}"
+          DTS:DTSID="{090743A2-A897-4019-A269-03CD6BE45B7A}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
           DTS:ObjectName="Les inn data fra Excel"
@@ -746,14 +746,14 @@ AND År = ? AND Sektor = ? AND Kjønn = ? AND Kompetansenivå = ? AND Turnus = ?
                       description="Specifies the SQL statement that generates the lookup table."
                       expressionType="Notify"
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">Select * From [KS_PAI05 Turnover]</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">Select * From [KS_PAI03 Heltidsandel]</property>
                     <property
                       dataType="System.String"
                       description="Specifies a SQL statement that uses parameters to generate the lookup table."
                       expressionType="Notify"
                       name="SqlCommandParam"
                       UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from 
-(Select * From [KS_PAI05 Turnover]) [refTable] 
+(Select * From [KS_PAI03 Heltidsandel]) [refTable] 
 where [refTable].[Kommunenummer] = ? 
 and [refTable].[Variabelnavn] = ? 
 and [refTable].[År] = ? and [refTable].[Sektor] = ? and [refTable].[Kjønn] = ? and [refTable].[Kompetansenivå] = ? and [refTable].[Turnus] = ?</property>
@@ -1130,7 +1130,7 @@ and [refTable].[År] = ? and [refTable].[Sektor] = ? and [refTable].[Kjønn] = ?
                       description="The SQL command to be executed."
                       expressionType="Notify"
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">Update [dbo].[KS_PAI05 Turnover] Set Kommunenummer = ?,
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">Update [dbo].[KS_PAI03 Heltidsandel] Set Kommunenummer = ?,
             Variabelnavn = ?,
             År = ?, Sektor = ?, Kjønn = ?, Kompetansenivå = ?, Turnus = ?,
  Verdi = ?
@@ -1519,7 +1519,7 @@ AND År = ? AND Sektor = ? AND Kjønn = ? AND Kompetansenivå = ? AND Turnus = ?
                       description="The SQL command to be executed."
                       expressionType="Notify"
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">Update [dbo].[KS_PAI05 Turnover] Set Kommunenummer = ?,
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">Update [dbo].[KS_PAI03 Heltidsandel] Set Kommunenummer = ?,
             Variabelnavn = ?,
             År = ?, Sektor = ?, Kjønn = ?, Kompetansenivå = ?, Turnus = ?,
  Verdi = ?
@@ -2454,8 +2454,8 @@ AND År = ? AND Sektor = ? AND Kjønn = ? AND Kompetansenivå = ? AND Turnus = ?
       <DTS:ForEachVariableMappings>
         <DTS:ForEachVariableMapping
           DTS:CreationName=""
-          DTS:DTSID="{68582116-DE90-43B3-937C-2F0EFC8EBB1B}"
-          DTS:ObjectName="{68582116-DE90-43B3-937C-2F0EFC8EBB1B}"
+          DTS:DTSID="{2FAF9CCB-908F-440C-83FC-098FEB44480C}"
+          DTS:ObjectName="{2FAF9CCB-908F-440C-83FC-098FEB44480C}"
           DTS:ValueIndex="0"
           DTS:VariableName="User::ExcelFile" />
       </DTS:ForEachVariableMappings>
@@ -2474,9 +2474,9 @@ AND År = ? AND Sektor = ? AND Kjønn = ? AND Kompetansenivå = ? AND Turnus = ?
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="180,41.6"
+          Size="179.2,41.6"
           Id="Package\Les alle filer\Les inn data fra Excel"
-          TopLeft="39.3333292106788,24.1333311017355" />
+          TopLeft="41.6190435353186,27.1921546740461" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
